@@ -117,11 +117,11 @@ Now, why are we able to extract heart rate from the sequence of the frame? It is
 
 The spatial and temporal processing is used to emphasize subtle temporal changes in a video.
 
-<center>
+
 
 ![](https://cdn-images-1.medium.com/max/2000/1*PIbHq6tg6djUwnmelOhaDw.png "Figure 3: Architecture for Euler Video Magnification")
 
-</center>
+
 
 The video sequence is decomposed into different spatial frequency bands. These bands might be magnified differently due to the difference in their SNR (Signal To Noise Ratio). The goal of spatial processing is simply to increase the temporal signal-to-noise ratio by pooling multiple pixels, then for the purpose of **computational efficiency and spatial filtering**, the low-pass filter is applied to the frames of the video spatially and then downsampled using **Laplace Pyramid**.
 
@@ -132,19 +132,20 @@ To understand this first of all we need to understand Gaussian Pyramid.
 
 The original image is convolved with a Gaussian kernel. As described above the resulting image is a low pass filtered version of the original image. The cut-off frequency can be controlled using the parameter σ that is standard variation.
 
-<center>
+
 
 ![](https://cdn-images-1.medium.com/max/2000/1*DvmPVVn8qAFibpwcmj_ybA.png "Figure 4: Laplacian Pyramid Implementation. star represents convolution operation with Gaussian filter and downward arrow represent downsampling of the image.")
 
-</center>
+
 
 The Laplacian is then computed as the difference between the original image and the low pass filtered image i.e it’s the difference between successive gaussian pyramid levels. This process is continued to obtain a set of band-pass filtered images (since each is the difference between two levels of the Gaussian pyramid). Thus the Laplacian pyramid is a set of bandpass filters
 
-<center>
+
 
 ![](https://cdn-images-1.medium.com/max/2000/1*MFjKM3pJIBluxOvjDiyZJQ.png "Figure 5: I,f represent Gaussian images and h represent laplacian images")
 
-</center>
+
+
 
 The original image is repeatedly filtered and subsampled to generate the sequence of reduced resolution images. These comprise a set of low pass filtered copies of the original image in which the bandwidth decreases in one-octave steps.
 
@@ -178,15 +179,18 @@ $$B(x,t) = \delta(t) \frac{\partial f(x)}{\partial x}$$
 
 This is a temporal Bandpass filter which is a result of applying a broadband temporal bandpass filter to $I(x, t)$ at every position x. For now, $\delta(t)$, is within the passband of the temporal bandpass filter.
 
+
 > Tip: For color amplification of blood flow, a narrow passband produces a more noise-free result.
 
-<center>
+
 
 ![](https://cdn-images-1.medium.com/max/2000/1*ET0w7uEXFCneh4BMRVdkgQ.png "Figure 6: The ideal filters (a) and (b) are implemented using DCT (Discrete Cosine Transform). The second- order IIR filter (d) have a broader passband than an ideal filter.")
 
-</center>
+
+
 
 > Important: The Butterworth filter is used to convert a user-specified frequency band into a second-order IIR (infinite impulse response) and is used in our real-time application.
+
 
 This shows that the frequency response of some of the temporal filters used in the paper. Ideal bandpass filters are used for color amplification as they have passbands with sharp cutoff frequencies.
 
