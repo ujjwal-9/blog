@@ -119,10 +119,6 @@ To reduce overfitting and share the work of learning lower level feature detecto
 We apply a clustering algorithm to the covariance matrix of the predictions of our generalist model so that a set of classes Sm that are often predicted together will be used as targets for one of our specialist models, m. So we apply K-means clustering to the columns of the covariance matrix to get our required clusters or classes.
 
 ![](https://cdn-images-1.medium.com/max/2000/1*Coch85xMgRVk6UbS5zjzVg.png "Assign a score to an ordered covariance matrix. High correlations within a cluster improve the score. High correlations between clusters decease the score.")
-<!-- <center>
-<img src="https://cdn-images-1.medium.com/max/2000/1*Coch85xMgRVk6UbS5zjzVg.png">
-
-Assign a score to an ordered covariance matrix. High correlations within a cluster improve the score. High correlations between clusters decease the score.</center> -->
 
 
 
