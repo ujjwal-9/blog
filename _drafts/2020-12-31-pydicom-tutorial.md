@@ -5,7 +5,7 @@ use_math: true
 description: Pydicom Tutorial 
 categories: [medicine, library]
 title:  Introduction to PyDICOM
-image: images/pydicom-tutorial/cover.svg
+image: images/pydicom-tutorial/cover.png
 ---
 
 [PyDICOM Website](https://pydicom.github.io/)
