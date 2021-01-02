@@ -34,8 +34,18 @@ DICOM defines:
 - formats for storage media exchange
 - requirements for conforming devices and programs
 
+<center>
+<img src="https://www.softneta.com/wp-content/uploads/2019/02/SendToPACS-converting-files-to-dicom-workflow.png">
+</center>
+
 > PACS (Picture Archiving and Communication System) provides economical storage of, and convenient access to, images from multiple modalities (source machine types).
+
+
 > RIS (Radiology Information System) is a computerized database used by radiology departments to store, manipulate, and distribute patient radiological data and imagery.
+
+<center>
+<img src="https://assets.extrahop.com/images/infographics/dicom-protocol-workflow.png">
+</center>
 
 PACS-RIS integration improves the flow of images for the radiologist. They communicate using some set of commands (called HL7) concerned with Admission/Discharge/Transfer (ADT) and Order/Entry.
 
