@@ -120,21 +120,18 @@ window.onload = wrap_img;
 
   <div class="post-content e-content" itemprop="articleBody">
     <ul class="section-nav">
-<li class="toc-entry toc-h1"><a href="#abstract">Abstract</a>
-<ul>
-<li class="toc-entry toc-h3"><a href="#about-cumbersome-models">About Cumbersome Models</a></li>
-<li class="toc-entry toc-h3"><a href="#teacher-and-student">Teacher and Student</a></li>
-<li class="toc-entry toc-h3"><a href="#so-how-is-this-transfer-of-knowledge-done">So how is this transfer of knowledge done?</a></li>
-<li class="toc-entry toc-h3"><a href="#distillation">Distillation</a></li>
-<li class="toc-entry toc-h3"><a href="#objective-function">Objective Function</a></li>
-<li class="toc-entry toc-h3"><a href="#training-ensembles-of-specialists">Training ensembles of specialists</a></li>
-<li class="toc-entry toc-h3"><a href="#specialist-models">Specialist Models</a></li>
-<li class="toc-entry toc-h3"><a href="#reduce-overfitting-in-specialist-models">Reduce Overfitting in Specialist Models</a></li>
-<li class="toc-entry toc-h3"><a href="#assign-classes-to-specialists">Assign classes to Specialists</a></li>
-<li class="toc-entry toc-h3"><a href="#performing-inference">Performing inference</a></li>
-<li class="toc-entry toc-h3"><a href="#soft-targets-as-regularizers">Soft Targets as Regularizers</a></li>
-</ul>
-</li>
+<li class="toc-entry toc-h1"><a href="#abstract">Abstract</a></li>
+<li class="toc-entry toc-h1"><a href="#about-cumbersome-models">About Cumbersome Models</a></li>
+<li class="toc-entry toc-h1"><a href="#teacher-and-student">Teacher and Student</a></li>
+<li class="toc-entry toc-h1"><a href="#so-how-is-this-transfer-of-knowledge-done">So how is this transfer of knowledge done?</a></li>
+<li class="toc-entry toc-h1"><a href="#distillation">Distillation</a></li>
+<li class="toc-entry toc-h1"><a href="#objective-function">Objective Function</a></li>
+<li class="toc-entry toc-h1"><a href="#training-ensembles-of-specialists">Training ensembles of specialists</a></li>
+<li class="toc-entry toc-h1"><a href="#specialist-models">Specialist Models</a></li>
+<li class="toc-entry toc-h1"><a href="#reduce-overfitting-in-specialist-models">Reduce Overfitting in Specialist Models</a></li>
+<li class="toc-entry toc-h1"><a href="#assign-classes-to-specialists">Assign classes to Specialists</a></li>
+<li class="toc-entry toc-h1"><a href="#performing-inference">Performing inference</a></li>
+<li class="toc-entry toc-h1"><a href="#soft-targets-as-regularizers">Soft Targets as Regularizers</a></li>
 </ul><p>The blog first appeared at Intel Devpost. <a href="https://software.intel.com/content/www/us/en/develop/articles/knowledge-distillation-with-keras.html">Here is the link</a></p>
 
 <blockquote>
@@ -172,8 +169,8 @@ window.onload = wrap_img;
 
 <p>For example, Since GoogLeNet is a very cumbersome (means deep and complex) network, its deepness gives the ability to extract and complex features and its complexity gives it the power to remain accurate. But the model is heavy enough that one for sure need a large amount of memory and a powerful GPU to perform large and complex calculations. So that’s why we need to transfer the knowledge learned by this model to a much smaller model which can easily be used in mobile.</p>
 
-<h3 id="about-cumbersome-models">
-<a class="anchor" href="#about-cumbersome-models" aria-hidden="true"><span class="octicon octicon-link"></span></a>About Cumbersome Models</h3>
+<h1 id="about-cumbersome-models">
+<a class="anchor" href="#about-cumbersome-models" aria-hidden="true"><span class="octicon octicon-link"></span></a>About Cumbersome Models</h1>
 
 <p>Cumbersome models learn to discriminate between a large number of classes. The normal <strong>training objective</strong> is to maximize the average log probability of the correct answer, and it assigns a probability to all the classes, with some classes given small probabilities with respect to others. The relative probabilities of incorrect answers tell us a lot about how this complex model tends to generalize. An image of a Car, for example, may only have a very small chance of being mistaken for a Truck, but that mistake is still many times more probable than mistaking it for a Cat.</p>
 <blockquote>
@@ -182,8 +179,8 @@ window.onload = wrap_img;
 
 <p>Since these operations will be quite heavy for mobile during the performance, so to deal with this situation, we have to transfer the knowledge of the cumbersome model to a small model which can be easily exported to mobile devices. To achieve this, we can consider the cumbersome model as <strong>Teacher Network</strong> and our new small model as <strong>Student Network.</strong></p>
 
-<h3 id="teacher-and-student">
-<a class="anchor" href="#teacher-and-student" aria-hidden="true"><span class="octicon octicon-link"></span></a>Teacher and Student</h3>
+<h1 id="teacher-and-student">
+<a class="anchor" href="#teacher-and-student" aria-hidden="true"><span class="octicon octicon-link"></span></a>Teacher and Student</h1>
 
 <p>You can ‘distill’ the large and complex network in another much smaller network, and the smaller network does a reasonable job of approximating the original function learned by a deep network.</p>
 
@@ -193,8 +190,8 @@ window.onload = wrap_img;
 
 <p>However, there is a catch, the distilled model (<strong>student</strong>), is trained to mimic the output of the larger network (<strong>teacher</strong>), instead of training it on the raw data directly. This has something to do with how the deeper network learns hierarchical abstractions of the features.</p>
 
-<h3 id="so-how-is-this-transfer-of-knowledge-done">
-<a class="anchor" href="#so-how-is-this-transfer-of-knowledge-done" aria-hidden="true"><span class="octicon octicon-link"></span></a>So how is this transfer of knowledge done?</h3>
+<h1 id="so-how-is-this-transfer-of-knowledge-done">
+<a class="anchor" href="#so-how-is-this-transfer-of-knowledge-done" aria-hidden="true"><span class="octicon octicon-link"></span></a>So how is this transfer of knowledge done?</h1>
 
 <center>
 
@@ -212,8 +209,8 @@ window.onload = wrap_img;
 
 <p>Much of the information about the learned function resides in the ratios of very small probabilities in the soft targets. This is valuable information that defines a rich similarity structure over the data (i. e. it says which 2’s look like 3’s and which look like 7’s or which “golden retriever” looks like “Labrador”) but it has very little influence on the cross-entropy cost function during the transfer stage because the probabilities are so close to zero.</p>
 
-<h3 id="distillation">
-<a class="anchor" href="#distillation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Distillation</h3>
+<h1 id="distillation">
+<a class="anchor" href="#distillation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Distillation</h1>
 
 <p>For distilling the learned knowledge we use <strong>Logits</strong> (the inputs to the final softmax). Logits can be used for learning the small model and this can be done by minimizing the squared difference between the logits produced by the cumbersome model and the logits produced by the small model.</p>
 
@@ -223,8 +220,8 @@ window.onload = wrap_img;
 
 <p>In distillation, we raise the temperature of the final softmax until the cumbersome model produces a suitably soft set of targets. We then use the same high temperature when training the small model to match these soft targets.</p>
 
-<h3 id="objective-function">
-<a class="anchor" href="#objective-function" aria-hidden="true"><span class="octicon octicon-link"></span></a>Objective Function</h3>
+<h1 id="objective-function">
+<a class="anchor" href="#objective-function" aria-hidden="true"><span class="octicon octicon-link"></span></a>Objective Function</h1>
 
 <p>The first objective function is the cross-entropy with the soft targets and this cross entropy is computed using the same high temperature in the softmax of the distilled model as was used for generating the soft targets from the cumbersome model.</p>
 
@@ -236,8 +233,8 @@ window.onload = wrap_img;
 
 </center>
 
-<h3 id="training-ensembles-of-specialists">
-<a class="anchor" href="#training-ensembles-of-specialists" aria-hidden="true"><span class="octicon octicon-link"></span></a>Training ensembles of specialists</h3>
+<h1 id="training-ensembles-of-specialists">
+<a class="anchor" href="#training-ensembles-of-specialists" aria-hidden="true"><span class="octicon octicon-link"></span></a>Training ensembles of specialists</h1>
 
 <p>Training an ensemble of models is a very simple way to take advantage of parallel computation. But there is an objection that an ensemble requires too much computation at test time. But this can be easily dealt with the technique we are learning. And so “Distillation” can be used to deal with this allegation.</p>
 
@@ -245,14 +242,14 @@ window.onload = wrap_img;
 <img src="https://cdn-images-1.medium.com/max/2000/1*aIBLpCWRF5J1kbXE_s9KcQ.png">
 </center>
 
-<h3 id="specialist-models">
+<h1 id="specialist-models">
 <a class="anchor" href="#specialist-models" aria-hidden="true"><span class="octicon octicon-link"></span></a><strong>Specialist Models</strong>
-</h3>
+</h1>
 
 <p><em>Specialist models and one generalist model make our one cumbersome model</em>. Generalist Model is trained on all training data and Specialist Models focus on a different confusable subset of the classes can reduce the total amount of computation required to learn an ensemble. The main problem with specialists is that they overfit very easily. But this overfitting may be prevented by using soft targets.</p>
 
-<h3 id="reduce-overfitting-in-specialist-models">
-<a class="anchor" href="#reduce-overfitting-in-specialist-models" aria-hidden="true"><span class="octicon octicon-link"></span></a>Reduce Overfitting in Specialist Models</h3>
+<h1 id="reduce-overfitting-in-specialist-models">
+<a class="anchor" href="#reduce-overfitting-in-specialist-models" aria-hidden="true"><span class="octicon octicon-link"></span></a>Reduce Overfitting in Specialist Models</h1>
 
 <p>To reduce overfitting and share the work of learning lower level feature detectors, each specialist model is initialized with the weights of the generalist model. These weights are then slightly modified by training the specialist, with half its examples coming from its special subset, and half sampled at random from the remainder of the training set. After training, we can correct for the biased training set by incrementing the logit of the dustbin class by the log of the proportion by which the specialist class is oversampled.</p>
 
@@ -260,8 +257,8 @@ window.onload = wrap_img;
 <img src="https://cdn-images-1.medium.com/max/2000/1*TDMCC6ZHzxQo-pn6Y-ZZWA.png">
 </center>
 
-<h3 id="assign-classes-to-specialists">
-<a class="anchor" href="#assign-classes-to-specialists" aria-hidden="true"><span class="octicon octicon-link"></span></a>Assign classes to Specialists</h3>
+<h1 id="assign-classes-to-specialists">
+<a class="anchor" href="#assign-classes-to-specialists" aria-hidden="true"><span class="octicon octicon-link"></span></a>Assign classes to Specialists</h1>
 
 <p>We apply a clustering algorithm to the covariance matrix of the predictions of our generalist model so that a set of classes Sm that are often predicted together will be used as targets for one of our specialist models, m. So we apply K-means clustering to the columns of the covariance matrix to get our required clusters or classes.</p>
 
@@ -276,8 +273,8 @@ window.onload = wrap_img;
   <p>Covariance/Correlation clustering provides a method for clustering a set of objects into the optimum number of clusters without specifying that number in advance.</p>
 </blockquote>
 
-<h3 id="performing-inference">
-<a class="anchor" href="#performing-inference" aria-hidden="true"><span class="octicon octicon-link"></span></a>Performing inference</h3>
+<h1 id="performing-inference">
+<a class="anchor" href="#performing-inference" aria-hidden="true"><span class="octicon octicon-link"></span></a>Performing inference</h1>
 
 <ul>
   <li>
@@ -298,8 +295,8 @@ window.onload = wrap_img;
 
 <p>KL denotes the KL divergence, and $p^m$, $p^g$ denote the probability distribution of a specialist model or the generalist full model. The distribution $p^m$ is over all the specialist classes of $m$ plus a single dustbin class, so when computing its $KL$ divergence from the full $q$ distribution we sum all of the probabilities that the full $q$ distribution assigns to all the classes in $m$’s dustbin.</p>
 
-<h3 id="soft-targets-as-regularizers">
-<a class="anchor" href="#soft-targets-as-regularizers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Soft Targets as Regularizers</h3>
+<h1 id="soft-targets-as-regularizers">
+<a class="anchor" href="#soft-targets-as-regularizers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Soft Targets as Regularizers</h1>
 
 <p>Soft Targets or labels predicted from a model contain more information that binary hard labels due to the fact that they encode similarity measures between the classes.</p>
 
