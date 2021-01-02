@@ -60,7 +60,7 @@ The variation in Red and Green colorspace on the location approximated on the fo
 
 The** Fourier transform** decomposes (also called *analysis*) a [function](https://en.wikipedia.org/wiki/Function_(mathematics)) of time (a *signal*) into its constituent frequencies. The Fourier transform of a function of time is itself a [complex](https://en.wikipedia.org/wiki/Complex_number)-valued function of frequency, whose magnitude component represents the amount of that frequency present in the original function, and whose [complex argument](https://en.wikipedia.org/wiki/Complex_argument) is the [phase offset](https://en.wikipedia.org/wiki/Phase_offset) of the basic sinusoid in that frequency. You can learn the basics of Fourier transform from this video.
 
-{% youtube https://youtu.be/spUNpyF58BY %}
+[![](https://res.cloudinary.com/marcomontalbano/image/upload/v1609610180/video_to_markdown/images/youtube--spUNpyF58BY-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://youtu.be/spUNpyF58BY "")
 
 
 Now let’s talk about some amplification techniques namely Lagrangian and Eulerian. These techniques will help us in amplifying the particular frequency so that we can see change happening at that rate, in our case heart rate.
@@ -197,7 +197,7 @@ This shows that the frequency response of some of the temporal filters used in t
 For pulse detection, after computing Laplacian pyramid the magnification value or amplification factor α, for the finest two levels are set to 0. This causes downsampling and applies a spatial low pass filter to each frame to reduce both quantization and noise and to boost the subtle pulse signal that we are interested in. The incoming video frame is then passed through an ideal bandpass filter with a passband of 0.83 Hz to 1 Hz (50 bpm to 60 bpm). Finally, a large value of α ≈ 100 (amplification factor) and λc ≈ 1000 (**cutoff frequency, beyond which an attenuated version of α is used that is either force α to zero for all λ < λc, or linearly scale α down to zero. This is important parameter in controlling noise**) was applied to the resulting spatially lowpass signal to emphasize the color change as much as possible. The final video was formed by adding this signal back to the original.
 
 
-{% youtube https://youtu.be/3rWycBEHn3s %}
+[![](https://res.cloudinary.com/marcomontalbano/image/upload/v1609610242/video_to_markdown/images/youtube--3rWycBEHn3s-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://youtu.be/3rWycBEHn3s "")
 
 
 In this video, we can see periodic green to red variations at the heartbeat and how blood perfuses the face.

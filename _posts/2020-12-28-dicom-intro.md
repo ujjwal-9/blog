@@ -61,8 +61,15 @@ This service is based over client-sever concept. They (Dicom applications) estab
 ### Patient Model
 
 Queries to image archives (PACS) are made in 4 level of DICOM hierarchy:
-<center><img src="https://1.bp.blogspot.com/-FcaeZix9gSQ/TtgAwmRrxlI/AAAAAAAAKvc/neMY9qqoy6U/s1600/DICOM-DATA-MODEL.png"></center>
-<center>DICOM data model</center>
+
+
+![](https://1.bp.blogspot.com/-FcaeZix9gSQ/TtgAwmRrxlI/AAAAAAAAKvc/neMY9qqoy6U/s1600/DICOM-DATA-MODEL.png "DICOM data model")
+
+
+<!-- <center>
+<img src="https://1.bp.blogspot.com/-FcaeZix9gSQ/TtgAwmRrxlI/AAAAAAAAKvc/neMY9qqoy6U/s1600/DICOM-DATA-MODEL.png">
+</center>
+<center>DICOM data model</center> -->
 
 Patient has  studies, studies have series which are scans and scans may have multiple instances or images (which are slices in CT scans).
 
@@ -78,7 +85,8 @@ Patient has  studies, studies have series which are scans and scans may have mul
 4. Instance Level
 
 <center>
-<img src="https://raw.githubusercontent.com/Ujjwal-9/blog/master/images/dicom-intro/query.png">
+
+<img src="/blog/images/dicom-intro/query.png">
 <!-- <table style="width:100%">
 <thead>
 <tr>
@@ -157,7 +165,11 @@ The DICOM standard is divided in 2 parts:
 
 A DICOM file consists of a header and image data sets
 
-<center><img src="https://raw.githubusercontent.com/Ujjwal-9/blog/master/images/dicom-intro/packet.jpg"></center>
+<center>
+
+<img src="/blog/images/dicom-intro/packet.jpg">
+
+</center>
 
 **Preamble** is used to access the images and other data in DICOM file.
 
@@ -254,41 +266,41 @@ This section contains steps on how to use ohif viewer for viewing dicom file bas
 ## Homepage
 Here you see the studies you have uploaded. Each study have series and these series have instances / images.
 <center>
-<img src="https://raw.githubusercontent.com/Ujjwal-9/blog/master/images/dicom-intro/ohif-home.png">
+<img src="/blog/images/dicom-intro/ohif-home.png">
 </center>
 
 Studies can be uploaded using `+` button on right. Example is shown below.
 
 <center>
-<img src="https://raw.githubusercontent.com/Ujjwal-9/blog/master/images/dicom-intro/ohif-home.gif">
+<img src="/blog/images/dicom-intro/ohif-home.gif">
 </center>
 
 ## Details on Scan View
 
 <center>
-<img src="https://raw.githubusercontent.com/Ujjwal-9/blog/master/images/dicom-intro/ct-scan-view.png">
+<img src="/blog/images/dicom-intro/ct-scan-view.png">
 </center>
 
 ## Calibrating Windowing
 <center>
-<img src="https://raw.githubusercontent.com/Ujjwal-9/blog/master/images/dicom-intro/ohif-change-WL.gif">
+<img src="/blog/images/dicom-intro/ohif-change-WL.gif">
 </center>
 
 Vertical mouse movement changes window level and horizontal movement changes window width.
 
 ## Visualization of slices
 
-<center><img src="https://raw.githubusercontent.com/Ujjwal-9/blog/master/images/dicom-intro/ohif-slice.gif"></center>
+<center><img src="/blog/images/dicom-intro/ohif-slice.gif"></center>
 
 ## 2D Multiplanar Reconstruction (MPR)
 
-<center><img src="https://raw.githubusercontent.com/Ujjwal-9/blog/master/images/dicom-intro/ohif-2d-mpr.png"></center>
+<center><img src="/blog/images/dicom-intro/ohif-2d-mpr.png"></center>
 
 The MPR tool provided within the Viewer can be used to reconstruct images in orthogonal planes (coronal, sagittal, axial or oblique, depending on what the base image plane is). This can help to create a visualization of the anatomy which was not possible using base images alone.
 
 ## Report view
 
-<center><img src="https://raw.githubusercontent.com/Ujjwal-9/blog/master/images/dicom-intro/ohif-report.png"></center>
+<center><img src="/blog/images/dicom-intro/ohif-report.png"></center>
 
 Report view has report on doc/pdf format displayed in viewer.
 
