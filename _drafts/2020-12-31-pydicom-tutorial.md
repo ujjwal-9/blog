@@ -14,20 +14,21 @@ Code can be found @ [Github](https://github.com/Ujjwal-9/medical-training/tree/m
 
 # Abstract
 
-Pydicom is a pure Python package for working with DICOM files. It lets you read, modify and write DICOM data in an easy "pythonic" way. 
+Pydicom is a pure Python package for working with DICOM files. It lets you read, modify and write DICOM data in an easy "pythonic" way.
+
 
 # Introduction
 
 **Installation**
 
 Using pip: 
-```
-pip install pydicom
+```bash
+$ pip install pydicom
 ```
 
 Using conda: 
-```
-conda install -c conda-forge pydicom
+```bash
+$ conda install -c conda-forge pydicom
 ```
 
 Pydicom comes with its own set of dicom images which can be used to go through examples.
@@ -52,8 +53,10 @@ def load_scan(path):
         s.SliceThickness = slice_thickness
     return slices
 ```
-
 `load_scan` loads the dicom files and sorts them according to their `Instance Number`. It also extracts slice thickness which is a very important parameter in these scans as it is indicative of resolution of the scans. Lower the slice thickness, better the resolution.
+
+
+**Slice Thickness**
 
 > Slice thickness directly impacts the precision of target localization during treatment.
 
@@ -66,6 +69,8 @@ Slice Increment/Spacing refers to the movement of the table/scanner for scanning
 > If slice thickness is greater than slice increment than there is anatomical information loss.
 
 If there is overlap between 2 adjacent slices that is `slice thickness > slice increment` than such cases acts as error correction.
+
+**HU Scaling**
 
 ```python
 def get_pixels_hu(scans):
@@ -90,11 +95,53 @@ def get_pixels_hu(scans):
 
 HU scaling is explained in my [dicom standard blog](http://ujjwal9.ml/blog/medicine/2020/12/28/dicom-intro.html). 
 
+**Multiplanar reconstruction**
 
-<!-- 
+![](https://images.ctfassets.net/cnu0m8re1exe/1k0YS9HKpsyurGlnI1Zlky/223cbf9b658b7068925ba7f944a9bb39/sagittal.jpg "Multiplanar view of brain.")
+
+```python
+slices = sorted(patient_dicom, key=lambda s: s.SliceLocation)
+
+# pixel aspects, assuming all slices are the same
+ps = slices[0].PixelSpacing
+ss = slices[0].SliceThickness
+ax_aspect = ps[1]/ps[0]
+sag_aspect = ps[1]/ss
+cor_aspect = ss/ps[0]
+
+# create 3D array
+img_shape = list(slices[0].pixel_array.shape)
+img_shape.append(len(slices))
+img3d = np.zeros(img_shape)
+
+# fill 3D array with the images from the files
+for i, s in enumerate(slices):
+    img2d = s.pixel_array
+    img3d[:, :, i] = img2d
+```
+
+> Multiplanar reformation or reconstruction (MPR) involves the process of converting data from an imaging modality acquired in a certain plane, usually axial, into another plane. It is most commonly performed with thin-slice data from volumetric CT in the axial plane, but it may be accomplished with scanning in any plane and whichever modality capable of cross-sectional imaging, including magnetic resonance imaging (MRI), PET and SPECT.
+
+[Source](https://radiopaedia.org/articles/multiplanar-reformation-mpr?lang=us)
+
+
+**Windowing**
+
+```python
+level = dicom_file.WindowCenter
+width = dicom_file.WindowWidth
+# ...or set window/level manually to values you want
+vmin = level - width/2
+vmax = level + width/2
+plt.imshow(hu_pixels, cmap='gray', vmin=vmin, vmax=vmax)
+plt.show()
+```
+
+![](https://www.stepwards.com/wp-content/uploads/2019/12/Screen-Shot-2019-10-06-at-8.45.17-PM-e1577078248771.jpg "Windows for various scans.")
+
+> Brain windows are useful for evaluation of brain hemorrhage, fluid-filled structures including blood vessels and ventricles, and air-filled spaces.
+
 > Bone windows are useful for evaluation in the setting of trauma. 
-
-> Brain windows are useful for evaluation of brain hemorrhage, fluid-filled structures including blood vessels and ventricles, and air-filled spaces.  -->
 
 
 # References

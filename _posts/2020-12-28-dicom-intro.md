@@ -217,7 +217,7 @@ HU is a quantitative scale for describing radiodensity. HU's is standardized acr
 
 $$HU = 1000 * \frac{\mu - \mu_{water}}{\mu_{water} - \mu_{air}}$$
 
-Where $\mu$ is linear attenuation coefficient.
+Where $\mu$ is [linear attenuation coefficient](https://radiopaedia.org/articles/linear-attenuation-coefficient?lang=us).
 
 
 <center>
