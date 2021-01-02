@@ -190,6 +190,7 @@ Sourced from [stackoverflow](https://stackoverflow.com/questions/6597843/dicom-s
 HU is a quantitative scale for describing radiodensity. HU's is standardized across all CT scans regardless of the scanner detector. 
 
 $$HU = 1000 * \frac{\mu - \mu_{water}}{\mu_{water} - \mu_{air}}$$
+
 Where $\mu$ is linear attenuation coefficient.
 
 

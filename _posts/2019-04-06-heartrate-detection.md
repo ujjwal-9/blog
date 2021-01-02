@@ -15,7 +15,11 @@ The world generates countless signals as it moves ahead in time, but most of the
 
 Finding a pattern in a seemingly random event is about how do we process the given information and convert it into something useful. In this article, we try to connect the dots of predicting heart rate with a camera alone. For this, we tag the video frame with actual heart rate and get to know which features impact an accurate prediction. For example which color signal in our RGB frames contributes towards better prediction and many more such small details.
 
-<center>![The eye](https://cdn-images-1.medium.com/max/7680/1*c5rJQpARaTtH4TgrrljbYA.jpeg)*The eye*</center>
+<!-- <center>
+<img src="https://cdn-images-1.medium.com/max/7680/1*c5rJQpARaTtH4TgrrljbYA.jpeg">
+The Eye
+</center> -->
+
 
 Take for instance our eyes and our ability to understand facial expressions in others. These changes last in a long enough amount of time that we are able to perceive it. But changes exhibited by a heart rate last for a very short period of time and hence become invisible to us. With the camera of a sufficiently high frame rate, i.e almost all modern cameras, these changes become visible. And hence we can find the heart rate.
 
@@ -27,9 +31,9 @@ In order to measure your heart rate, doctors have traditionally relied upon tech
 
 1. **Radial Pulse**: Place your pointer and middle fingers on the inside of your opposite wrist just below the thumb and then count how many beats you feel in 1 minute.
 
-1. **Carotid Pulse: **Place your pointer and middle fingers on the side of your windpipe just below the jawbone and then count how many beats you feel in 1 minute.
+1. **Carotid Pulse**: Place your pointer and middle fingers on the side of your windpipe just below the jawbone and then count how many beats you feel in 1 minute.
 
-1. **Brachial Pulse: **Another location for checking your pulse is the [brachial artery](https://www.healthline.com/human-body-maps/brachial-artery). This method is used most commonly in young children.
+1. **Brachial Pulse**: Another location for checking your pulse is the [brachial artery](https://www.healthline.com/human-body-maps/brachial-artery). This method is used most commonly in young children.
 
 ## Overview of Euler video magnification
 
@@ -41,9 +45,13 @@ The general concept behind this algorithm is to first of all approximate a point
 
 The intensity of this point is then decomposed into different color space namely Red, Blue, Green. But we prefer Red and Green color only as Blue tends to introduce noise in heart rate detection.
 
-<center>![**Figure 1: Average Color Intensity Variation of a Location specified on the forehead.**](https://cdn-images-1.medium.com/max/2000/1*rBux120Fg5f-jZUyB8P-0A.png)***Figure 1: Average Color Intensity Variation of a Location specified on the forehead.***
+<center>
 
-![**Figure 2: Heart Rate extracted by Fourier Transform.**](https://cdn-images-1.medium.com/max/2000/1*YCLMq00v1riy1at2b5-kwg.png)***Figure 2: Heart Rate extracted by Fourier Transform.***</center>
+![**Figure 1: Average Color Intensity Variation of a Location specified on the forehead.**](https://cdn-images-1.medium.com/max/2000/1*rBux120Fg5f-jZUyB8P-0A.png)***Figure 1: Average Color Intensity Variation of a Location specified on the forehead.***
+
+![**Figure 2: Heart Rate extracted by Fourier Transform.**](https://cdn-images-1.medium.com/max/2000/1*YCLMq00v1riy1at2b5-kwg.png)***Figure 2: Heart Rate extracted by Fourier Transform.***
+
+</center>
 
 The variation in Red and Green colorspace on the location approximated on the forehead is then fed to **Fourier Transform** to convert the function of spatial location on the video frame and time to frequency domain which therefore helps in extracting heart rate.
 
@@ -59,7 +67,12 @@ Now let’s talk about some amplification techniques namely Lagrangian and Euler
 
 The Lagrangian version of amplification is to analyze the angle of motion of the pixels of interest in the tracking image. For example, if we want to study the flow rate of the river, we take a boat, go down the river, and record the movement of the ship.
 
-<center>![](https://cdn-images-1.medium.com/max/2000/1*eODd2ohQgUxhCOOBvdqwfA.png)</center>
+<center>
+
+<img src="https://cdn-images-1.medium.com/max/2000/1*eODd2ohQgUxhCOOBvdqwfA.png">
+
+</center>
+
 
 **However, the Lagrange perspective approach has the following shortcomings:**
 
@@ -77,7 +90,13 @@ Unlike the Lagrangian perspective, the Euler version of amplification does not e
 
 After that, it is assumed that the **entire image is changing,** but the characteristics of the signals like frequency, amplitude, etc. are varying. So we are interested in the change in the signals. In this way, the amplification of the “change” becomes the precipitation and enhancement of the frequency band of interest. For example, the same is to study the flow rate of river water. We can also sit on the shore and observe the change of the river when it passes through a fixed place. This change may contain many components that are not related to the water flow itself, such as the leaves falling off the water surface. Oh, but we only focus on the part that best reflects the water flow rate.
 
-<center>![](https://cdn-images-1.medium.com/max/2000/1*P__1_fSDtjWqBWnvDNo3Ew.png)</center>
+<center>
+
+<img src="https://cdn-images-1.medium.com/max/2000/1*P__1_fSDtjWqBWnvDNo3Ew.png">
+
+</center>
+
+
 > What is “change” — the whole scene is changing, and the change signals we are interested in are hidden in it;
 > Amplify “change” — Separate and enhance the signal of interest by means of signal processing.
 
@@ -124,13 +143,16 @@ Time Domain Filtering: After obtaining the basebands of different spatial freque
 
 ## Amplification :
 
-<center>![This represents Color Intensity of the pixels at location x in time t. δ(t) represents the displacement function. α is the amplification factor.](https://cdn-images-1.medium.com/max/2000/1*M8GevMNkgKvgtc1_Ds6Bfw.png)
+$$\hat I(x,t) = f(x+(1+ \alpha)\delta(t)$$
 
-This represents Color Intensity of the pixels at location x in time t. δ(t) represents the displacement function. α is the amplification factor.</center>
+This represents Color Intensity of the pixels at location x in time t. δ(t) represents the displacement function. α is the amplification factor.
 
-f(x + δ(t)) in a first-order Taylor expansion about x, can be represented as:
 
-<center>![](https://cdn-images-1.medium.com/max/2000/1*H32q2uJIdiEn53XhhAkDbw.png)</center>
+$f(x + δ(t))$ in a first-order Taylor expansion about x, can be represented as:
+
+<center>
+
+![](https://cdn-images-1.medium.com/max/2000/1*H32q2uJIdiEn53XhhAkDbw.png)</center>
 
 <center>![This is first order Taylor expansion.Here (x-a) is displacement function.](https://cdn-images-1.medium.com/max/2000/1*XogiUihZDWNrOLHuGGIFgw.png)
 
