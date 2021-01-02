@@ -45,13 +45,14 @@ The general concept behind this algorithm is to first of all approximate a point
 
 The intensity of this point is then decomposed into different color space namely Red, Blue, Green. But we prefer Red and Green color only as Blue tends to introduce noise in heart rate detection.
 
-<center>
 
 ![](https://cdn-images-1.medium.com/max/2000/1*rBux120Fg5f-jZUyB8P-0A.png "Figure 1: Average Color Intensity Variation of a Location specified on the forehead.")
 
+
+
 ![](https://cdn-images-1.medium.com/max/2000/1*YCLMq00v1riy1at2b5-kwg.png "Figure 2: Heart Rate extracted by Fourier Transform.")
 
-</center>
+
 
 The variation in Red and Green colorspace on the location approximated on the forehead is then fed to **Fourier Transform** to convert the function of spatial location on the video frame and time to frequency domain which therefore helps in extracting heart rate.
 
@@ -59,7 +60,9 @@ The variation in Red and Green colorspace on the location approximated on the fo
 
 The** Fourier transform** decomposes (also called *analysis*) a [function](https://en.wikipedia.org/wiki/Function_(mathematics)) of time (a *signal*) into its constituent frequencies. The Fourier transform of a function of time is itself a [complex](https://en.wikipedia.org/wiki/Complex_number)-valued function of frequency, whose magnitude component represents the amount of that frequency present in the original function, and whose [complex argument](https://en.wikipedia.org/wiki/Complex_argument) is the [phase offset](https://en.wikipedia.org/wiki/Phase_offset) of the basic sinusoid in that frequency. You can learn the basics of Fourier transform from this video.
 
+
 > youtube: https://youtu.be/spUNpyF58BY
+
 
 Now let’s talk about some amplification techniques namely Lagrangian and Eulerian. These techniques will help us in amplifying the particular frequency so that we can see change happening at that rate, in our case heart rate.
 
@@ -121,6 +124,7 @@ The spatial and temporal processing is used to emphasize subtle temporal changes
 </center>
 
 The video sequence is decomposed into different spatial frequency bands. These bands might be magnified differently due to the difference in their SNR (Signal To Noise Ratio). The goal of spatial processing is simply to increase the temporal signal-to-noise ratio by pooling multiple pixels, then for the purpose of **computational efficiency and spatial filtering**, the low-pass filter is applied to the frames of the video spatially and then downsampled using **Laplace Pyramid**.
+
 
 ### What is the Laplace Pyramid?
 
@@ -188,7 +192,9 @@ This shows that the frequency response of some of the temporal filters used in t
 
 For pulse detection, after computing Laplacian pyramid the magnification value or amplification factor α, for the finest two levels are set to 0. This causes downsampling and applies a spatial low pass filter to each frame to reduce both quantization and noise and to boost the subtle pulse signal that we are interested in. The incoming video frame is then passed through an ideal bandpass filter with a passband of 0.83 Hz to 1 Hz (50 bpm to 60 bpm). Finally, a large value of α ≈ 100 (amplification factor) and λc ≈ 1000 (**cutoff frequency, beyond which an attenuated version of α is used that is either force α to zero for all λ < λc, or linearly scale α down to zero. This is important parameter in controlling noise**) was applied to the resulting spatially lowpass signal to emphasize the color change as much as possible. The final video was formed by adding this signal back to the original.
 
+
 > youtube: https://youtu.be/3rWycBEHn3s
+
 
 In this video, we can see periodic green to red variations at the heartbeat and how blood perfuses the face.
 
