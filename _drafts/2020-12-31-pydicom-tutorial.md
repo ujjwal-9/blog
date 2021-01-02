@@ -5,7 +5,7 @@ use_math: true
 description: Pydicom Tutorial 
 categories: [medicine, library]
 title:  Introduction to PyDICOM
-image: images/pydicom-tutorial/pydicom_flat_black.svg
+image: images/pydicom-tutorial/cover.svg
 ---
 
 [PyDICOM Website](https://pydicom.github.io/)
@@ -153,3 +153,5 @@ plt.show()
 ["Hounsfield Scale"](https://www.sciencedirect.com/topics/medicine-and-dentistry/hounsfield-scale)
 
 ["Usefulness of hounsfield unit and density in the assessment and treatment of urinary stones"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4220362/)
+
+["Multiplanar reformation (MPR)". Dr Daniel J Bell and Dr Francis Fortin et al. radiopaedia.org](https://radiopaedia.org/articles/multiplanar-reformation-mpr?lang=us)
