@@ -197,9 +197,7 @@ The Eye
 
 <p>The** Fourier transform** decomposes (also called <em>analysis</em>) a <a href="https://en.wikipedia.org/wiki/Function_(mathematics)">function</a> of time (a <em>signal</em>) into its constituent frequencies. The Fourier transform of a function of time is itself a <a href="https://en.wikipedia.org/wiki/Complex_number">complex</a>-valued function of frequency, whose magnitude component represents the amount of that frequency present in the original function, and whose <a href="https://en.wikipedia.org/wiki/Complex_argument">complex argument</a> is the <a href="https://en.wikipedia.org/wiki/Phase_offset">phase offset</a> of the basic sinusoid in that frequency. You can learn the basics of Fourier transform from this video.</p>
 
-<blockquote>
-  <p>youtube: https://youtu.be/spUNpyF58BY</p>
-</blockquote>
+<p>[<img src="https://res.cloudinary.com/marcomontalbano/image/upload/v1609610180/video_to_markdown/images/youtube--spUNpyF58BY-c05b58ac6eb4c4700831b2b3070cd403.jpg" alt="">](https://youtu.be/spUNpyF58BY “”)</p>
 
 <p>Now let’s talk about some amplification techniques namely Lagrangian and Eulerian. These techniques will help us in amplifying the particular frequency so that we can see change happening at that rate, in our case heart rate.</p>
 
@@ -221,6 +219,7 @@ The Eye
 <p>➔ The tracking of the particles is performed independently, and with the consideration, that system is closed i.e there is no transfer of energy in and out of frame being studied. So the lack of consideration of the overall image is prone to the fact that the image is not closed, thereby affecting the effect of the amplification.</p>
 
 <p>➔ The amplification of the action of the target object is to modify the motion trajectory of the particle. Since the position of the particle changes, it is necessary to fill the original position of the particle, as there is a continuous flow in action and system is closed therefore some other particle will take the position. This increases the complexity of the algorithm.</p>
+
 <blockquote>
   <p>What is “change” — the trajectory of the pixel of interest over time, such pixels often need to be assisted by manual or other prior knowledge;
 Amplify “change” — increase the amplitude of these pixels.</p>
@@ -329,9 +328,7 @@ Amplify “change” — Separate and enhance the signal of interest by means of
 
 <p>For pulse detection, after computing Laplacian pyramid the magnification value or amplification factor α, for the finest two levels are set to 0. This causes downsampling and applies a spatial low pass filter to each frame to reduce both quantization and noise and to boost the subtle pulse signal that we are interested in. The incoming video frame is then passed through an ideal bandpass filter with a passband of 0.83 Hz to 1 Hz (50 bpm to 60 bpm). Finally, a large value of α ≈ 100 (amplification factor) and λc ≈ 1000 (<strong>cutoff frequency, beyond which an attenuated version of α is used that is either force α to zero for all λ &lt; λc, or linearly scale α down to zero. This is important parameter in controlling noise</strong>) was applied to the resulting spatially lowpass signal to emphasize the color change as much as possible. The final video was formed by adding this signal back to the original.</p>
 
-<blockquote>
-  <p>youtube: https://youtu.be/3rWycBEHn3s</p>
-</blockquote>
+<p>[<img src="https://res.cloudinary.com/marcomontalbano/image/upload/v1609610242/video_to_markdown/images/youtube--3rWycBEHn3s-c05b58ac6eb4c4700831b2b3070cd403.jpg" alt="">](https://youtu.be/3rWycBEHn3s “”)</p>
 
 <p>In this video, we can see periodic green to red variations at the heartbeat and how blood perfuses the face.</p>
 
