@@ -20,7 +20,7 @@ http://ujjwal9.ml/blog/
 - How to read CT Scans.
 
 
-> ### Recommendations are more than welcome. Please create a issue for the same.
+> Recommendations are more than welcome. Please create a issue for the same.
 
 
 Follow me on twitter [@theujjwal9](https://twitter.com/@thujjwal9)
