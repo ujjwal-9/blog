@@ -35,6 +35,12 @@ Pydicom comes with its own set of dicom images which can be used to go through e
 
 They also give `get_dataset.py` file to download datasets, which is also included in the [github repo](https://github.com/Ujjwal-9/medical-training/tree/master/dicom-demo).
 
+```bash
+$ python get_datasets.py --show
+$ python get_datasets.py --output {path}
+
+```
+
 
 # Tutorial
 ```python
