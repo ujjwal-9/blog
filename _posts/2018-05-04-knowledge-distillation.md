@@ -9,6 +9,11 @@ image: https://cdn-images-1.medium.com/max/2000/1*6G6HHityX_zBgrFfR_z-UQ.png
 
 The blog first appeared at Intel Devpost. [Here is the link](https://software.intel.com/content/www/us/en/develop/articles/knowledge-distillation-with-keras.html)
 
+
+> Hinton, Geoffrey, et al. "Distilling the Knowledge in a Neural Network." arXiv, 9 Mar. 2015, arxiv.org/abs/1503.02531v1.
+
+[Link to paper](https://arxiv.org/abs/1503.02531v1)
+
 # Abstract
 
 The problem that we are facing right now is that we have built sophisticated models that can perform complex tasks, but the question is, how do we deploy such bulky models on our mobile devices for instant usage. Obviously, we can deploy our model to the cloud and can call it whenever we need its service but this would require a reliable internet connection and hence it becomes a constraint in production. So what we need is a model that can run on our mobile devices.
@@ -42,17 +47,27 @@ Since these operations will be quite heavy for mobile during the performance, so
 
 You can ‘distill’ the large and complex network in another much smaller network, and the smaller network does a reasonable job of approximating the original function learned by a deep network.
 
-<center>![](https://cdn-images-1.medium.com/max/2000/1*6G6HHityX_zBgrFfR_z-UQ.png)</center>
+<center>
+<img src="https://cdn-images-1.medium.com/max/2000/1*6G6HHityX_zBgrFfR_z-UQ.png">
+</center>
 
 However, there is a catch, the distilled model (**student**), is trained to mimic the output of the larger network (**teacher**), instead of training it on the raw data directly. This has something to do with how the deeper network learns hierarchical abstractions of the features.
 
 ### So how is this transfer of knowledge done?
 
-<center>![](https://cdn-images-1.medium.com/max/2964/1*WxFiH3XDY1-28tbyi4BGDA.png)</center>
+<center>
+
+![](https://cdn-images-1.medium.com/max/2964/1*WxFiH3XDY1-28tbyi4BGDA.png)
+
+</center>
 
 The transferring of the generalization ability of the cumbersome model to a small model can be done by the use of class probabilities produced by the cumbersome model as “soft targets” for training the small model. For this transfer stage, we use the same training set or a separate “transfer” set as used for training the cumbersome model. When the cumbersome model is a large ensemble of simpler models, we can use arithmetic or geometric mean of their individual predictive distributions as the soft targets. When the soft targets have high entropy, they provide much more information per training case than hard targets and much less variance in the gradient between training cases, so the small model can often be trained on much less data than the original cumbersome model while using a much higher learning rate.
 
-<center>![](https://cdn-images-1.medium.com/max/2000/1*ekrPR2eYbD2Y9HWTV5YGxw.jpeg)</center>
+<center>
+
+<img src="https://cdn-images-1.medium.com/max/2000/1*ekrPR2eYbD2Y9HWTV5YGxw.jpeg">
+
+</center>
 
 Much of the information about the learned function resides in the ratios of very small probabilities in the soft targets. This is valuable information that defines a rich similarity structure over the data (i. e. it says which 2’s look like 3’s and which look like 7’s or which “golden retriever” looks like “Labrador”) but it has very little influence on the cross-entropy cost function during the transfer stage because the probabilities are so close to zero.
 
@@ -60,11 +75,8 @@ Much of the information about the learned function resides in the ratios of very
 
 For distilling the learned knowledge we use **Logits** (the inputs to the final softmax). Logits can be used for learning the small model and this can be done by minimizing the squared difference between the logits produced by the cumbersome model and the logits produced by the small model.
 
-<center>
-<img src="https://cdn-images-1.medium.com/max/2000/1*yJD5529FbmtbZ-GC25_ITw.png">
 
-*Softmax with Temperature*
-</center>
+![](https://cdn-images-1.medium.com/max/2000/1*yJD5529FbmtbZ-GC25_ITw.png "Softmax with Temperature")
 
 For high temperatures (***T -> inf***), all actions have nearly the same probability and at the lower the temperature (***T -> 0***), the more expected rewards affect the probability. For low temperature, the probability of the action with the highest expected reward tends to 1.
 
@@ -77,14 +89,18 @@ The first objective function is the cross-entropy with the soft targets and this
 The second objective function is the cross-entropy with the correct labels and this is computed using exactly the same logits in softmax of the distilled model but at a temperature of 1
 
 <center>
+
 <img src="https://cdn-images-1.medium.com/max/2000/1*rbi3dpUQaQjI-ezbyDzhug.png">
+
 </center>
 
 ### Training ensembles of specialists
 
 Training an ensemble of models is a very simple way to take advantage of parallel computation. But there is an objection that an ensemble requires too much computation at test time. But this can be easily dealt with the technique we are learning. And so “Distillation” can be used to deal with this allegation.
 
-<center><img src="https://cdn-images-1.medium.com/max/2000/1*aIBLpCWRF5J1kbXE_s9KcQ.png"></center>
+<center>
+<img src="https://cdn-images-1.medium.com/max/2000/1*aIBLpCWRF5J1kbXE_s9KcQ.png">
+</center>
 
 ### **Specialist Models**
 
@@ -94,15 +110,19 @@ Training an ensemble of models is a very simple way to take advantage of paralle
 
 To reduce overfitting and share the work of learning lower level feature detectors, each specialist model is initialized with the weights of the generalist model. These weights are then slightly modified by training the specialist, with half its examples coming from its special subset, and half sampled at random from the remainder of the training set. After training, we can correct for the biased training set by incrementing the logit of the dustbin class by the log of the proportion by which the specialist class is oversampled.
 
-<center><img src="https://cdn-images-1.medium.com/max/2000/1*TDMCC6ZHzxQo-pn6Y-ZZWA.png"></center>
+<center>
+<img src="https://cdn-images-1.medium.com/max/2000/1*TDMCC6ZHzxQo-pn6Y-ZZWA.png">
+</center>
 
 ### Assign classes to Specialists
 
 We apply a clustering algorithm to the covariance matrix of the predictions of our generalist model so that a set of classes Sm that are often predicted together will be used as targets for one of our specialist models, m. So we apply K-means clustering to the columns of the covariance matrix to get our required clusters or classes.
 
-<center><img src="https://cdn-images-1.medium.com/max/2000/1*Coch85xMgRVk6UbS5zjzVg.png">
+![](https://cdn-images-1.medium.com/max/2000/1*Coch85xMgRVk6UbS5zjzVg.png "Assign a score to an ordered covariance matrix. High correlations within a cluster improve the score. High correlations between clusters decease the score.")
+<!-- <center>
+<img src="https://cdn-images-1.medium.com/max/2000/1*Coch85xMgRVk6UbS5zjzVg.png">
 
-Assign a score to an ordered covariance matrix. High correlations within a cluster improve the score. High correlations between clusters decease the score.</center>
+Assign a score to an ordered covariance matrix. High correlations within a cluster improve the score. High correlations between clusters decease the score.</center> -->
 
 
 
@@ -115,12 +135,17 @@ Assign a score to an ordered covariance matrix. High correlations within a clust
 
 * We then take all the specialist models, m, whose special subset of confusable classes, Sm, has a non-empty intersection with k and call this the active set of specialists Ak (note that this set may be empty). We then find the full probability distribution q over all the classes that minimizes:
 
-<center><img src="https://cdn-images-1.medium.com/max/2000/1*NRXkBNMx4VE5xDYGl5aB-w.png"></center>
 
-<center><img src="https://cdn-images-1.medium.com/max/2000/1*MpnL9tKLfqAdhAJkY6hnwA.png"></center>
+$$KL(p^g, q) + \sum_{m \epsilon A_k} KL(p^m, q)$$
+
+$$KL(p||q) = \sum_{i}p_i \log\frac{p_i}{q_i}$$
+
+<!-- <center><img src="https://cdn-images-1.medium.com/max/2000/1*NRXkBNMx4VE5xDYGl5aB-w.png"></center>
+
+<center><img src="https://cdn-images-1.medium.com/max/2000/1*MpnL9tKLfqAdhAJkY6hnwA.png"></center> -->
 
 
-KL denotes the KL divergence, and p^m, p^g denote the probability distribution of a specialist model or the generalist full model. The distribution p^m is over all the specialist classes of m plus a single dustbin class, so when computing its KL divergence from the full q distribution we sum all of the probabilities that the full q distribution assigns to all the classes in m’s dustbin.
+KL denotes the KL divergence, and $p^m$, $p^g$ denote the probability distribution of a specialist model or the generalist full model. The distribution $p^m$ is over all the specialist classes of $m$ plus a single dustbin class, so when computing its $KL$ divergence from the full $q$ distribution we sum all of the probabilities that the full $q$ distribution assigns to all the classes in $m$’s dustbin.
 
 ### Soft Targets as Regularizers
 
@@ -128,10 +153,10 @@ Soft Targets or labels predicted from a model contain more information that bina
 
 Incorrect labels tagged by the model describe co-label similarities, and these similarities should be evident in future stages of learning, even if the effect is diminished. For example, imagine training a deep neural net on a classification dataset of various dog breeds. In the initial few stages of learning the model will not accurately distinguish between similar dog-breeds such as a Belgian Shepherd versus a German Shepherd. This same effect, although not so exaggerated, should appear in later stages of training. If given an image of a German Shepherd, the model predicts the class German Shepherd with a high-accuracy, the next highest predicted dog should still be a Belgian Shepherd or a similar looking dog. Over-fitting starts to occur when the majority of these co-label effects begin to disappear. By forcing the model to contain these effects in the later stages of training, we reduced the amount of over-fitting.
 
-> **Though using soft targets as Regularizers is not considered very effective.**
-
-> **The paper [Distilling the Knowledge in a Neural Network](https://arxiv.org/abs/1503.02531v1) is written by Geoffrey Hinton, Oriol Vinyals, Jeff Dean**
+> Though using soft targets as Regularizers is not considered very effective.
 
 
-### *Associated Code can be found at [Github](https://github.com/Ujjwal-9/Knowledge-Distillation). Please follow me on twitter [@theujjwal9](https://twitter.com/theujjwal9)*
+
+
+**Associated Code can be found at [Github](https://github.com/Ujjwal-9/Knowledge-Distillation). Follow me on twitter [@theujjwal9](https://twitter.com/theujjwal9)**
 
