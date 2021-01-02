@@ -12,11 +12,10 @@ http://ujjwal9.ml/blog/
 - Heartrate detection using Euler Video Magnification
 - Docker Introduction
 - Dicom Introduction (and Ohif viewer Walkthrough)
-
+- Pydicom Tutorial
 
 # Drafts
 
-- Pydicom Tutorial
 - How to read CT Scans.
 
 
