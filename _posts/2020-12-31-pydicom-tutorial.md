@@ -38,7 +38,6 @@ They also give `get_dataset.py` file to download datasets, which is also include
 ```bash
 $ python get_datasets.py --show
 $ python get_datasets.py --output {path}
-
 ```
 
 
