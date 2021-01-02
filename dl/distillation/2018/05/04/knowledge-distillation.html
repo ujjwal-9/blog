@@ -133,10 +133,15 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h3"><a href="#assign-classes-to-specialists">Assign classes to Specialists</a></li>
 <li class="toc-entry toc-h3"><a href="#performing-inference">Performing inference</a></li>
 <li class="toc-entry toc-h3"><a href="#soft-targets-as-regularizers">Soft Targets as Regularizers</a></li>
-<li class="toc-entry toc-h3"><a href="#associated-code-can-be-found-at-github-please-follow-me-on-twitter-theujjwal9">Associated Code can be found at Github. Please follow me on twitter @theujjwal9</a></li>
 </ul>
 </li>
 </ul><p>The blog first appeared at Intel Devpost. <a href="https://software.intel.com/content/www/us/en/develop/articles/knowledge-distillation-with-keras.html">Here is the link</a></p>
+
+<blockquote>
+  <p>Hinton, Geoffrey, et al. “Distilling the Knowledge in a Neural Network.” arXiv, 9 Mar. 2015, arxiv.org/abs/1503.02531v1.</p>
+</blockquote>
+
+<p><a href="https://arxiv.org/abs/1503.02531v1">Link to paper</a></p>
 
 <h1 id="abstract">
 <a class="anchor" href="#abstract" aria-hidden="true"><span class="octicon octicon-link"></span></a>Abstract</h1>
@@ -182,18 +187,28 @@ window.onload = wrap_img;
 
 <p>You can ‘distill’ the large and complex network in another much smaller network, and the smaller network does a reasonable job of approximating the original function learned by a deep network.</p>
 
-<center>![](https://cdn-images-1.medium.com/max/2000/1*6G6HHityX_zBgrFfR_z-UQ.png)</center>
+<center>
+<img src="https://cdn-images-1.medium.com/max/2000/1*6G6HHityX_zBgrFfR_z-UQ.png">
+</center>
 
 <p>However, there is a catch, the distilled model (<strong>student</strong>), is trained to mimic the output of the larger network (<strong>teacher</strong>), instead of training it on the raw data directly. This has something to do with how the deeper network learns hierarchical abstractions of the features.</p>
 
 <h3 id="so-how-is-this-transfer-of-knowledge-done">
 <a class="anchor" href="#so-how-is-this-transfer-of-knowledge-done" aria-hidden="true"><span class="octicon octicon-link"></span></a>So how is this transfer of knowledge done?</h3>
 
-<center>![](https://cdn-images-1.medium.com/max/2964/1*WxFiH3XDY1-28tbyi4BGDA.png)</center>
+<center>
+
+![](https://cdn-images-1.medium.com/max/2964/1*WxFiH3XDY1-28tbyi4BGDA.png)
+
+</center>
 
 <p>The transferring of the generalization ability of the cumbersome model to a small model can be done by the use of class probabilities produced by the cumbersome model as “soft targets” for training the small model. For this transfer stage, we use the same training set or a separate “transfer” set as used for training the cumbersome model. When the cumbersome model is a large ensemble of simpler models, we can use arithmetic or geometric mean of their individual predictive distributions as the soft targets. When the soft targets have high entropy, they provide much more information per training case than hard targets and much less variance in the gradient between training cases, so the small model can often be trained on much less data than the original cumbersome model while using a much higher learning rate.</p>
 
-<center>![](https://cdn-images-1.medium.com/max/2000/1*ekrPR2eYbD2Y9HWTV5YGxw.jpeg)</center>
+<center>
+
+<img src="https://cdn-images-1.medium.com/max/2000/1*ekrPR2eYbD2Y9HWTV5YGxw.jpeg">
+
+</center>
 
 <p>Much of the information about the learned function resides in the ratios of very small probabilities in the soft targets. This is valuable information that defines a rich similarity structure over the data (i. e. it says which 2’s look like 3’s and which look like 7’s or which “golden retriever” looks like “Labrador”) but it has very little influence on the cross-entropy cost function during the transfer stage because the probabilities are so close to zero.</p>
 
@@ -202,11 +217,7 @@ window.onload = wrap_img;
 
 <p>For distilling the learned knowledge we use <strong>Logits</strong> (the inputs to the final softmax). Logits can be used for learning the small model and this can be done by minimizing the squared difference between the logits produced by the cumbersome model and the logits produced by the small model.</p>
 
-<center>
-<img src="https://cdn-images-1.medium.com/max/2000/1*yJD5529FbmtbZ-GC25_ITw.png">
-
-*Softmax with Temperature*
-</center>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*yJD5529FbmtbZ-GC25_ITw.png" alt="" title="Softmax with Temperature"></p>
 
 <p>For high temperatures (<strong><em>T -&gt; inf</em></strong>), all actions have nearly the same probability and at the lower the temperature (<strong><em>T -&gt; 0</em></strong>), the more expected rewards affect the probability. For low temperature, the probability of the action with the highest expected reward tends to 1.</p>
 
@@ -220,7 +231,9 @@ window.onload = wrap_img;
 <p>The second objective function is the cross-entropy with the correct labels and this is computed using exactly the same logits in softmax of the distilled model but at a temperature of 1</p>
 
 <center>
+
 <img src="https://cdn-images-1.medium.com/max/2000/1*rbi3dpUQaQjI-ezbyDzhug.png">
+
 </center>
 
 <h3 id="training-ensembles-of-specialists">
@@ -228,7 +241,9 @@ window.onload = wrap_img;
 
 <p>Training an ensemble of models is a very simple way to take advantage of parallel computation. But there is an objection that an ensemble requires too much computation at test time. But this can be easily dealt with the technique we are learning. And so “Distillation” can be used to deal with this allegation.</p>
 
-<center><img src="https://cdn-images-1.medium.com/max/2000/1*aIBLpCWRF5J1kbXE_s9KcQ.png"></center>
+<center>
+<img src="https://cdn-images-1.medium.com/max/2000/1*aIBLpCWRF5J1kbXE_s9KcQ.png">
+</center>
 
 <h3 id="specialist-models">
 <a class="anchor" href="#specialist-models" aria-hidden="true"><span class="octicon octicon-link"></span></a><strong>Specialist Models</strong>
@@ -241,17 +256,21 @@ window.onload = wrap_img;
 
 <p>To reduce overfitting and share the work of learning lower level feature detectors, each specialist model is initialized with the weights of the generalist model. These weights are then slightly modified by training the specialist, with half its examples coming from its special subset, and half sampled at random from the remainder of the training set. After training, we can correct for the biased training set by incrementing the logit of the dustbin class by the log of the proportion by which the specialist class is oversampled.</p>
 
-<center><img src="https://cdn-images-1.medium.com/max/2000/1*TDMCC6ZHzxQo-pn6Y-ZZWA.png"></center>
+<center>
+<img src="https://cdn-images-1.medium.com/max/2000/1*TDMCC6ZHzxQo-pn6Y-ZZWA.png">
+</center>
 
 <h3 id="assign-classes-to-specialists">
 <a class="anchor" href="#assign-classes-to-specialists" aria-hidden="true"><span class="octicon octicon-link"></span></a>Assign classes to Specialists</h3>
 
 <p>We apply a clustering algorithm to the covariance matrix of the predictions of our generalist model so that a set of classes Sm that are often predicted together will be used as targets for one of our specialist models, m. So we apply K-means clustering to the columns of the covariance matrix to get our required clusters or classes.</p>
 
-<center>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*Coch85xMgRVk6UbS5zjzVg.png" alt="" title="Assign a score to an ordered covariance matrix. High correlations within a cluster improve the score. High correlations between clusters decease the score.">
+&lt;!– </p><center>
 <img src="https://cdn-images-1.medium.com/max/2000/1*Coch85xMgRVk6UbS5zjzVg.png">
+</center>
 
-Assign a score to an ordered covariance matrix. High correlations within a cluster improve the score. High correlations between clusters decease the score.</center>
+<p>Assign a score to an ordered covariance matrix. High correlations within a cluster improve the score. High correlations between clusters decease the score.&lt;/center&gt; –&gt;</p>
 
 <blockquote>
   <p>Covariance/Correlation clustering provides a method for clustering a set of objects into the optimum number of clusters without specifying that number in advance.</p>
@@ -269,11 +288,15 @@ Assign a score to an ordered covariance matrix. High correlations within a clust
   </li>
 </ul>
 
-<center><img src="https://cdn-images-1.medium.com/max/2000/1*NRXkBNMx4VE5xDYGl5aB-w.png"></center>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mi>L</mi><mo stretchy="false">(</mo><msup><mi>p</mi><mi>g</mi></msup><mo separator="true">,</mo><mi>q</mi><mo stretchy="false">)</mo><mo>+</mo><munder><mo>∑</mo><mrow><mi>m</mi><mi>ϵ</mi><msub><mi>A</mi><mi>k</mi></msub></mrow></munder><mi>K</mi><mi>L</mi><mo stretchy="false">(</mo><msup><mi>p</mi><mi>m</mi></msup><mo separator="true">,</mo><mi>q</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">KL(p^g, q) + \sum_{m \epsilon A_k} KL(p^m, q)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="mord mathdefault">L</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.714392em;"><span style="top:-3.1130000000000004em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03588em;">g</span></span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:2.450201em;vertical-align:-1.400196em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.050005em;"><span style="top:-1.855664em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">m</span><span class="mord mathdefault mtight">ϵ</span><span class="mord mtight"><span class="mord mathdefault mtight">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3487714285714287em;margin-left:0em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15122857142857138em;"><span></span></span></span></span></span></span></span></span></span><span style="top:-3.0500049999999996em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.400196em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="mord mathdefault">L</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7143919999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">m</span></span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="mclose">)</span></span></span></span></span>
 
-<center><img src="https://cdn-images-1.medium.com/max/2000/1*MpnL9tKLfqAdhAJkY6hnwA.png"></center>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mi>L</mi><mo stretchy="false">(</mo><mi>p</mi><mi mathvariant="normal">∣</mi><mi mathvariant="normal">∣</mi><mi>q</mi><mo stretchy="false">)</mo><mo>=</mo><munder><mo>∑</mo><mi>i</mi></munder><msub><mi>p</mi><mi>i</mi></msub><mi>log</mi><mo>⁡</mo><mfrac><msub><mi>p</mi><mi>i</mi></msub><msub><mi>q</mi><mi>i</mi></msub></mfrac></mrow><annotation encoding="application/x-tex">KL(p||q) = \sum_{i}p_i \log\frac{p_i}{q_i}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="mord mathdefault">L</span><span class="mopen">(</span><span class="mord mathdefault">p</span><span class="mord">∣</span><span class="mord">∣</span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.385229em;vertical-align:-1.277669em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0500050000000003em;"><span style="top:-1.872331em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span style="top:-3.050005em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.277669em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1075599999999999em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8804400000000001em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span>
 
-<p>KL denotes the KL divergence, and p^m, p^g denote the probability distribution of a specialist model or the generalist full model. The distribution p^m is over all the specialist classes of m plus a single dustbin class, so when computing its KL divergence from the full q distribution we sum all of the probabilities that the full q distribution assigns to all the classes in m’s dustbin.</p>
+<!-- <center><img src="https://cdn-images-1.medium.com/max/2000/1*NRXkBNMx4VE5xDYGl5aB-w.png"></center>
+
+<center><img src="https://cdn-images-1.medium.com/max/2000/1*MpnL9tKLfqAdhAJkY6hnwA.png"></center> -->
+
+<p>KL denotes the KL divergence, and $p^m$, $p^g$ denote the probability distribution of a specialist model or the generalist full model. The distribution $p^m$ is over all the specialist classes of $m$ plus a single dustbin class, so when computing its $KL$ divergence from the full $q$ distribution we sum all of the probabilities that the full $q$ distribution assigns to all the classes in $m$’s dustbin.</p>
 
 <h3 id="soft-targets-as-regularizers">
 <a class="anchor" href="#soft-targets-as-regularizers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Soft Targets as Regularizers</h3>
@@ -283,16 +306,10 @@ Assign a score to an ordered covariance matrix. High correlations within a clust
 <p>Incorrect labels tagged by the model describe co-label similarities, and these similarities should be evident in future stages of learning, even if the effect is diminished. For example, imagine training a deep neural net on a classification dataset of various dog breeds. In the initial few stages of learning the model will not accurately distinguish between similar dog-breeds such as a Belgian Shepherd versus a German Shepherd. This same effect, although not so exaggerated, should appear in later stages of training. If given an image of a German Shepherd, the model predicts the class German Shepherd with a high-accuracy, the next highest predicted dog should still be a Belgian Shepherd or a similar looking dog. Over-fitting starts to occur when the majority of these co-label effects begin to disappear. By forcing the model to contain these effects in the later stages of training, we reduced the amount of over-fitting.</p>
 
 <blockquote>
-  <p><strong>Though using soft targets as Regularizers is not considered very effective.</strong></p>
+  <p>Though using soft targets as Regularizers is not considered very effective.</p>
 </blockquote>
 
-<blockquote>
-  <p><strong>The paper <a href="https://arxiv.org/abs/1503.02531v1">Distilling the Knowledge in a Neural Network</a> is written by Geoffrey Hinton, Oriol Vinyals, Jeff Dean</strong></p>
-</blockquote>
-
-<h3 id="associated-code-can-be-found-at-github-please-follow-me-on-twitter-theujjwal9">
-<a class="anchor" href="#associated-code-can-be-found-at-github-please-follow-me-on-twitter-theujjwal9" aria-hidden="true"><span class="octicon octicon-link"></span></a><em>Associated Code can be found at <a href="https://github.com/Ujjwal-9/Knowledge-Distillation">Github</a>. Please follow me on twitter <a href="https://twitter.com/theujjwal9">@theujjwal9</a></em>
-</h3>
+<p><strong>Associated Code can be found at <a href="https://github.com/Ujjwal-9/Knowledge-Distillation">Github</a>. Follow me on twitter <a href="https://twitter.com/theujjwal9">@theujjwal9</a></strong></p>
 
 
   </div><a class="u-url" href="/blog/dl/distillation/2018/05/04/knowledge-distillation.html" hidden></a>
