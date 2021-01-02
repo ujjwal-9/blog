@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Docker | Ujjwal’s Blog</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Docker" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Leveraging docker to encourage reproducibility and easy maintainace of project." />
+<meta property="og:description" content="Leveraging docker to encourage reproducibility and easy maintainace of project." />
+<link rel="canonical" href="http://ujjwal9.ml/blog/docker/dl-tools/2020/12/24/docker.html" />
+<meta property="og:url" content="http://ujjwal9.ml/blog/docker/dl-tools/2020/12/24/docker.html" />
+<meta property="og:site_name" content="Ujjwal’s Blog" />
+<meta property="og:image" content="http://ujjwal9.ml/blog/images/docker/docker.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-12-24T00:00:00-06:00" />
+<script type="application/ld+json">
+{"url":"http://ujjwal9.ml/blog/docker/dl-tools/2020/12/24/docker.html","@type":"BlogPosting","headline":"Docker","dateModified":"2020-12-24T00:00:00-06:00","datePublished":"2020-12-24T00:00:00-06:00","image":"http://ujjwal9.ml/blog/images/docker/docker.png","mainEntityOfPage":{"@type":"WebPage","@id":"http://ujjwal9.ml/blog/docker/dl-tools/2020/12/24/docker.html"},"description":"Leveraging docker to encourage reproducibility and easy maintainace of project.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="http://ujjwal9.ml/blog/feed.xml" title="Ujjwal's Blog" /><!-- the google_analytics_id gets auto inserted from the config file -->
+
+
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-112402500-1','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+<link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" /><script src="https://hypothes.is/embed.js" async></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.css" integrity="sha512-h7nl+xz8wgDlNM4NqKEM4F1NkIRS17M9+uJwIGwuo8vGqIl4BhuCKdxjWEINm+xyrUjNCnK5dCrhM0sj+wTIXw==" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.js" integrity="sha512-/CMIhXiDA3m2c9kzRyd97MTb3MC6OVnx4TElQ7fkkoRghwDf6gi41gaT1PwF270W6+J60uTmwgeRpNpJdRV6sg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/contrib/auto-render.min.js" integrity="sha512-Do7uJAaHZm5OLrIv/yN4w0iG1dbu01kzdMNnFfu/mAqgUk6Nniv2JYHcwH+cNwjqgLcqcuBBk+JRvprLVI8azg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha512-0doc9hKxR3PYwso42RD1p5ySZpzzuDiOwMrdCEh2WdJZCjcmFKc/wEnL+z8fBQrnHoiNWbo+3fiGkOYXBdQp4A==" crossorigin="anonymous"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement( document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "[%", right: "%]", display: true},
+            {left: "$", right: "$", display: false}
+        ]}
+        );
+    });
+    </script>
+
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/blog/">Ujjwal&#39;s Blog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/blog/about/">About Me</a><a class="page-link" href="/blog/search/">Search</a><a class="page-link" href="/blog/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Docker</h1><p class="page-description">Leveraging docker to encourage reproducibility and easy maintainace of project.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-12-24T00:00:00-06:00" itemprop="datePublished">
+        Dec 24, 2020
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      6 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/blog/categories/#docker">docker</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#dl-tools">dl-tools</a>
+        
+      
+      </p>
+    
+
+    </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h1"><a href="#abstract">Abstract</a></li>
+<li class="toc-entry toc-h1"><a href="#earlier-work">Earlier Work</a></li>
+<li class="toc-entry toc-h1"><a href="#what-is-docker">What is docker?</a></li>
+<li class="toc-entry toc-h1"><a href="#dockerfile">Dockerfile</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#volume">Volume</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#docker-compose">Docker Compose</a></li>
+<li class="toc-entry toc-h1"><a href="#application">Application</a></li>
+</ul><p><a href="https://docker.com/">Docker Website!</a></p>
+
+<p>Checkout my project code @ <a href="https://github.com/Ujjwal-9/medical-training/tree/master/dockerized-run">Github</a></p>
+
+<h1 id="abstract">
+<a class="anchor" href="#abstract" aria-hidden="true"><span class="octicon octicon-link"></span></a>Abstract</h1>
+<p>We often try to simplify things but usually end up making it much more difficult. Similar is the case with code. We code, install additional dependencies, and remove redundancies. With this 3 step process, we sometimes end up with very difficult process to explain on how to reproduce the results and rerun the experiments. This blog explains about docker which is a tool designed to make it easier to create, deploy, and run applications by using containers.</p>
+
+<h1 id="earlier-work">
+<a class="anchor" href="#earlier-work" aria-hidden="true"><span class="octicon octicon-link"></span></a>Earlier Work</h1>
+<p>Before docker was introduced, virtualization of resources was used which provided independent virtual machines for clients to work upon. But this came with a price of heavy operating systems which may easily exceed over <em>1GB</em> despite supporting light applications (like 300MB). So, this drawback led to advent of containers (dockers).</p>
+<center><img src="https://raw.githubusercontent.com/Ujjwal-9/blog/master/images/docker/docker-vs-vm.png?token=AF6IPCPBAGYVCIPE3KSF75C74TTLW"></center>
+
+<h1 id="what-is-docker">
+<a class="anchor" href="#what-is-docker" aria-hidden="true"><span class="octicon octicon-link"></span></a>What is docker?</h1>
+<p>Docker is based on containers which run on shared resources of your PC but in isolation as shown in the following architecture. Container is an efficient mechanism to keep your software components together and maintainable. You can also run multiple containers at the same time to support a serive. Docker also provides with a mechanism to start all the containers concerned with that service with one command using docker compose. We will talk about it later.</p>
+
+<h1 id="dockerfile">
+<a class="anchor" href="#dockerfile" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dockerfile</h1>
+
+<p>A Dockerfile is a simple text file that contains a list of commands that the Docker client calls while creating an image.</p>
+
+<p>Working Dockerfile for conda environemnt.</p>
+
+<div class="language-dockerfile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">FROM</span><span class="s"> continuumio/miniconda3</span>
+
+<span class="k">WORKDIR</span><span class="s"> /app</span>
+
+<span class="c"># Create the environment:</span>
+<span class="k">COPY</span><span class="s"> environment.yml .</span>
+<span class="k">RUN </span>conda <span class="nb">env </span>create <span class="nt">-f</span> environment.yml
+
+<span class="c"># Make RUN commands use the new environment:</span>
+<span class="k">SHELL</span><span class="s"> ["conda", "run", "-n", "myenv", "/bin/bash", "-c"]</span>
+<span class="k">RUN </span>python <span class="nt">-c</span> <span class="s2">"import numpy"</span>
+
+<span class="c"># The code to run when container is started:</span>
+<span class="k">COPY</span><span class="s"> run.py .</span>
+<span class="k">ENTRYPOINT</span><span class="s"> ["conda", "run", "-n", "myenv", "python", "run.py"]</span>
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p>FROM creates a layer from the continuumio/miniconda3 Docker image.</p>
+  </li>
+  <li>
+    <p>COPY adds files from your Docker client’s current directory.</p>
+  </li>
+  <li>
+    <p>RUN builds your application with make.</p>
+  </li>
+  <li>
+    <p>CMD specifies what command to run within the container.</p>
+  </li>
+  <li>
+    <p>ENTRYPOINT is to set the image’s main command, allowing that image to be run as though it was that command.</p>
+  </li>
+  <li>
+    <p>SHELL instruction allows the default shell used for the shell form of commands to be overridden. The default shell on Linux is <code class="language-plaintext highlighter-rouge">["/bin/sh", "-c"]</code>, and on Windows is <code class="language-plaintext highlighter-rouge">["cmd", "/S", "/C"]</code></p>
+  </li>
+</ul>
+
+<p>Container Image is built using</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>docker build <span class="nt">-t</span> &lt;app_name&gt;:&lt;label_name&gt; <span class="nb">.</span>
+</code></pre></div></div>
+
+<p>To make sure certain package is installed we can add,</p>
+
+<div class="language-dockerfile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">RUN </span><span class="nb">echo</span> <span class="s2">"Make sure flask is installed:"</span>
+<span class="k">RUN </span>python <span class="nt">-c</span> <span class="s2">"import flask"</span>
+</code></pre></div></div>
+
+<p>The image defined by your Dockerfile generate containers that have <strong>ephemeral</strong> states. It gets destroyed as soon as process is over. To access files in container we may either bash into container to run the command which generates a new file which we need on our local file system and then use <code class="language-plaintext highlighter-rouge">$docker cp</code> to tranfer to local file system. And if we wish to use files from our local system in docker container we may mount those files either using <code class="language-plaintext highlighter-rouge">COPY</code> when generating container or we may mount it at runtime using volume. We can also specify volume which can be utilized by both local file system and docker.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>docker build <span class="nt">-t</span> dockerized-run <span class="nb">.</span>
+<span class="nv">$ </span><span class="nb">sudo </span>docker run <span class="nt">--rm</span> <span class="nt">-it</span> <span class="nt">-v</span> &lt;PATH-TO_IMAGES&gt;/images:/app/images <span class="nt">--entrypoint</span><span class="o">=</span>/bin/bash dockerized-run
+
+<span class="o">(</span>base<span class="o">)</span> root@b74706db6f68:/app# <span class="nb">ls
+</span>environment.yml  images
+<span class="o">(</span>base<span class="o">)</span> root@b74706db6f68:/app# <span class="nb">cd </span>images
+<span class="o">(</span>base<span class="o">)</span> root@b74706db6f68:/app/images# <span class="nb">ls
+</span>out.png  test.png
+</code></pre></div></div>
+
+<h2 id="volume">
+<a class="anchor" href="#volume" aria-hidden="true"><span class="octicon octicon-link"></span></a>Volume</h2>
+
+<ul>
+  <li>Mounting volume at runtime.</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>docker run <span class="nt">--rm</span> <span class="nt">-it</span> <span class="nt">-v</span> &lt;source-path&gt;:&lt;target-path&gt; &lt;docker-container-name&gt;
+</code></pre></div></div>
+
+<p>The above command will run docker with specified volume (-v) mounted in the</p>
+
+<ul>
+  <li>Mounting volume at build time using docker compose.</li>
+</ul>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">version</span><span class="pi">:</span> <span class="s2">"</span><span class="s">3.9"</span>
+<span class="na">services</span><span class="pi">:</span>
+  <span class="na">deeplearning</span><span class="pi">:</span>
+    <span class="na">build</span><span class="pi">:</span> <span class="s">.</span>
+    <span class="na">volumes</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">.:/app</span>
+</code></pre></div></div>
+
+<p>Here <code class="language-plaintext highlighter-rouge">volume</code> keyword specifies to mount current directory on local file system to /images on container. So the changes made to those files mounted at /images will also be reflected in local file system.</p>
+
+<h1 id="docker-compose">
+<a class="anchor" href="#docker-compose" aria-hidden="true"><span class="octicon octicon-link"></span></a>Docker Compose</h1>
+
+<p>It is used to start multiple containers as a single service. You may start services like react and flask server together as a service.</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">version</span><span class="pi">:</span> <span class="s2">"</span><span class="s">3.9"</span>
+<span class="na">services</span><span class="pi">:</span>
+  <span class="na">web</span><span class="pi">:</span>
+    <span class="na">build</span><span class="pi">:</span> <span class="s">.</span>
+    <span class="na">ports</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">5000:5000"</span>
+  <span class="na">redis</span><span class="pi">:</span>
+    <span class="na">image</span><span class="pi">:</span> <span class="s2">"</span><span class="s">redis:alpine"</span>
+</code></pre></div></div>
+<p>Taken from docker compose example at <a href="https://docs.docker.com/compose/gettingstarted/">docker compose docs</a>. Here we are starting 2 services 	web and redis. <code class="language-plaintext highlighter-rouge">Web</code> is build using dockerfile as specified by <code class="language-plaintext highlighter-rouge">. (dot)</code> pointing towards dockerfile and <code class="language-plaintext highlighter-rouge">port</code> binds the container and the host machine to the exposed port, 5000. This can also be done using dockerfile by using <code class="language-plaintext highlighter-rouge">EXPOSE</code>.</p>
+
+<p><code class="language-plaintext highlighter-rouge">version</code> is used to specify that we want the details of the version of Docker Compose.</p>
+
+<h1 id="application">
+<a class="anchor" href="#application" aria-hidden="true"><span class="octicon octicon-link"></span></a>Application</h1>
+<p>Lets also talk about dockers application in AI research. Now given todays deep learning systems and its other applications, the need for using sameversion of library becomes necessary for inducing reproducibilty in these models. The most common package manager used for python is anaconda.</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">name</span><span class="pi">:</span> <span class="s">myenv</span>
+<span class="na">channels</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">conda-forge</span>
+<span class="na">dependencies</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">python=3.8</span>
+  <span class="pi">-</span> <span class="s">numpy</span>
+</code></pre></div></div>
+
+<p>We build it with below specified dockerfile.</p>
+
+<div class="language-dockerfile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">FROM</span><span class="s"> continuumio/miniconda3</span>
+
+<span class="k">COPY</span><span class="s"> environment.yml .</span>
+<span class="k">RUN </span>conda <span class="nb">env </span>create <span class="nt">-f</span> environment.yml
+
+<span class="k">ENTRYPOINT</span><span class="s"> ["conda", "run", "-n", "example", \</span>
+            "python", "-c", \
+            "import numpy; print('success!')"]
+</code></pre></div></div>
+
+<p>In this environment, we install Python 3.8 and NumPy, and when we run the image it imports NumPy to make sure everything is working. This can bloat upto <em>950MB</em>. Where is all the disk space being going?</p>
+
+<ol>
+  <li>Conda caches downloaded packages.</li>
+  <li>Conda base environment where toolchain is installed takes huge space. For example, when we install <code class="language-plaintext highlighter-rouge">continuumio/miniconda3</code>, it comes with its own python which we dont intend use.</li>
+</ol>
+
+<p>First problem can be solved by removing those cached files. Second problem is conda specific and hence unavoidable but we can do away with it at runtime.</p>
+
+<div class="language-dockerfile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># The build-stage image:</span>
+<span class="k">FROM</span><span class="s"> continuumio/miniconda3 AS build</span>
+
+<span class="c"># Install the package as normal:</span>
+<span class="k">COPY</span><span class="s"> environment.yml .</span>
+<span class="k">RUN </span>conda <span class="nb">env </span>create <span class="nt">-f</span> environment.yml
+
+<span class="c"># Install conda-pack:</span>
+<span class="k">RUN </span>conda <span class="nb">install</span> <span class="nt">-c</span> conda-forge conda-pack
+
+<span class="c"># Use conda-pack to create a standalone enviornment</span>
+<span class="c"># in /venv:</span>
+<span class="k">RUN </span>conda-pack <span class="nt">-n</span> example <span class="nt">-o</span> /tmp/env.tar <span class="o">&amp;&amp;</span> <span class="se">\
+</span>  <span class="nb">mkdir</span> /venv <span class="o">&amp;&amp;</span> <span class="nb">cd</span> /venv <span class="o">&amp;&amp;</span> <span class="nb">tar </span>xf /tmp/env.tar <span class="o">&amp;&amp;</span> <span class="se">\
+</span>  <span class="nb">rm</span> /tmp/env.tar
+
+<span class="c"># We've put venv in same path it'll be in final image,</span>
+<span class="c"># so now fix up paths:</span>
+<span class="k">RUN </span>/venv/bin/conda-unpack
+
+
+<span class="c"># The runtime-stage image; we can use Debian as the</span>
+<span class="c"># base image since the Conda env also includes Python</span>
+<span class="c"># for us.</span>
+<span class="k">FROM</span><span class="s"> debian:buster AS runtime</span>
+
+<span class="c"># Copy /venv from the previous stage:</span>
+<span class="k">COPY</span><span class="s"> --from=build /venv /venv</span>
+
+<span class="c"># When image is run, run the code with the environment</span>
+<span class="c"># activated:</span>
+<span class="k">SHELL</span><span class="s"> ["/bin/bash", "-c"]</span>
+<span class="k">ENTRYPOINT</span><span class="s"> source /venv/bin/activate &amp;&amp; \</span>
+           python -c "import numpy; print('success!')"
+</code></pre></div></div>
+<p>The above solutions is provided <a href="https://pythonspeed.com/articles/conda-docker-image-size/">here</a>.</p>
+
+
+  </div><a class="u-url" href="/blog/docker/dl-tools/2020/12/24/docker.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/blog/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/blog/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/blog/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Approximating the Universe</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/ujjwal-9" title="ujjwal-9"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/theujjwal9" title="theujjwal9"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

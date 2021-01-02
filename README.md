@@ -6,10 +6,27 @@
 
 http://ujjwal9.ml/blog/
 
-# My Blog
+# Published Blogs
+
+- Knowledge Distillation with Keras
+- Heartrate detection using Euler Video Magnification
+- Docker Introduction
+- Dicom Introduction (and Ohif viewer Walkthrough)
 
 
-_powered by [fastpages](https://github.com/fastai/fastpages)_
+# Drafts
+
+- Pydicom Tutorial
+- How to read CT Scans.
+
+
+> ### Recommendations are more than welcome. Please create a issue for the same.
+
+
+Follow me on twitter [@theujjwal9](https://twitter.com/@thujjwal9)
+
+
+<!-- _powered by [fastpages](https://github.com/fastai/fastpages)_
 
 
 ## What To Do Next?
@@ -26,4 +43,4 @@ Great!  You have setup your repo.  Now its time to start writing content.  Some 
 
 Note: you may want to remove example blog posts from the `_posts`,  `_notebooks` or `_word` folders (but leave them empty, don't delete these folders) if you don't want these blog posts to appear on your site.
 
-Please use the [nbdev & blogging channel](https://forums.fast.ai/c/fastai-users/nbdev/48) in the fastai forums for any questions or feature requests.
+Please use the [nbdev & blogging channel](https://forums.fast.ai/c/fastai-users/nbdev/48) in the fastai forums for any questions or feature requests. -->

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Knowledge Distillation | Ujjwal’s Blog</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Knowledge Distillation" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Transforming large deep learning models to smaller models woith imporved perform." />
+<meta property="og:description" content="Transforming large deep learning models to smaller models woith imporved perform." />
+<link rel="canonical" href="http://ujjwal9.ml/blog/dl/distillation/2018/05/04/knowledge-distillation.html" />
+<meta property="og:url" content="http://ujjwal9.ml/blog/dl/distillation/2018/05/04/knowledge-distillation.html" />
+<meta property="og:site_name" content="Ujjwal’s Blog" />
+<meta property="og:image" content="https://cdn-images-1.medium.com/max/2000/1*6G6HHityX_zBgrFfR_z-UQ.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-05-04T00:00:00-05:00" />
+<script type="application/ld+json">
+{"url":"http://ujjwal9.ml/blog/dl/distillation/2018/05/04/knowledge-distillation.html","@type":"BlogPosting","headline":"Knowledge Distillation","dateModified":"2018-05-04T00:00:00-05:00","datePublished":"2018-05-04T00:00:00-05:00","image":"https://cdn-images-1.medium.com/max/2000/1*6G6HHityX_zBgrFfR_z-UQ.png","mainEntityOfPage":{"@type":"WebPage","@id":"http://ujjwal9.ml/blog/dl/distillation/2018/05/04/knowledge-distillation.html"},"description":"Transforming large deep learning models to smaller models woith imporved perform.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="http://ujjwal9.ml/blog/feed.xml" title="Ujjwal's Blog" /><!-- the google_analytics_id gets auto inserted from the config file -->
+
+
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-112402500-1','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+<link rel="shortcut icon" type="image/x-icon" href="/blog/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" /><script src="https://hypothes.is/embed.js" async></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.css" integrity="sha512-h7nl+xz8wgDlNM4NqKEM4F1NkIRS17M9+uJwIGwuo8vGqIl4BhuCKdxjWEINm+xyrUjNCnK5dCrhM0sj+wTIXw==" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.js" integrity="sha512-/CMIhXiDA3m2c9kzRyd97MTb3MC6OVnx4TElQ7fkkoRghwDf6gi41gaT1PwF270W6+J60uTmwgeRpNpJdRV6sg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/contrib/auto-render.min.js" integrity="sha512-Do7uJAaHZm5OLrIv/yN4w0iG1dbu01kzdMNnFfu/mAqgUk6Nniv2JYHcwH+cNwjqgLcqcuBBk+JRvprLVI8azg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha512-0doc9hKxR3PYwso42RD1p5ySZpzzuDiOwMrdCEh2WdJZCjcmFKc/wEnL+z8fBQrnHoiNWbo+3fiGkOYXBdQp4A==" crossorigin="anonymous"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement( document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "[%", right: "%]", display: true},
+            {left: "$", right: "$", display: false}
+        ]}
+        );
+    });
+    </script>
+
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/blog/">Ujjwal&#39;s Blog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/blog/about/">About Me</a><a class="page-link" href="/blog/search/">Search</a><a class="page-link" href="/blog/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Knowledge Distillation</h1><p class="page-description">Transforming large deep learning models to smaller models woith imporved perform.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2018-05-04T00:00:00-05:00" itemprop="datePublished">
+        May 4, 2018
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      10 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/blog/categories/#dl">dl</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#distillation">distillation</a>
+        
+      
+      </p>
+    
+
+    </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h1"><a href="#abstract">Abstract</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#about-cumbersome-models">About Cumbersome Models</a></li>
+<li class="toc-entry toc-h3"><a href="#teacher-and-student">Teacher and Student</a></li>
+<li class="toc-entry toc-h3"><a href="#so-how-is-this-transfer-of-knowledge-done">So how is this transfer of knowledge done?</a></li>
+<li class="toc-entry toc-h3"><a href="#distillation">Distillation</a></li>
+<li class="toc-entry toc-h3"><a href="#objective-function">Objective Function</a></li>
+<li class="toc-entry toc-h3"><a href="#training-ensembles-of-specialists">Training ensembles of specialists</a></li>
+<li class="toc-entry toc-h3"><a href="#specialist-models">Specialist Models</a></li>
+<li class="toc-entry toc-h3"><a href="#reduce-overfitting-in-specialist-models">Reduce Overfitting in Specialist Models</a></li>
+<li class="toc-entry toc-h3"><a href="#assign-classes-to-specialists">Assign classes to Specialists</a></li>
+<li class="toc-entry toc-h3"><a href="#performing-inference">Performing inference</a></li>
+<li class="toc-entry toc-h3"><a href="#soft-targets-as-regularizers">Soft Targets as Regularizers</a></li>
+<li class="toc-entry toc-h3"><a href="#associated-code-can-be-found-at-github-please-follow-me-on-twitter-theujjwal9">Associated Code can be found at Github. Please follow me on twitter @theujjwal9</a></li>
+</ul>
+</li>
+</ul><p>The blog first appeared at Intel Devpost. <a href="https://software.intel.com/content/www/us/en/develop/articles/knowledge-distillation-with-keras.html">Here is the link</a></p>
+
+<h1 id="abstract">
+<a class="anchor" href="#abstract" aria-hidden="true"><span class="octicon octicon-link"></span></a>Abstract</h1>
+
+<p>The problem that we are facing right now is that we have built sophisticated models that can perform complex tasks, but the question is, how do we deploy such bulky models on our mobile devices for instant usage. Obviously, we can deploy our model to the cloud and can call it whenever we need its service but this would require a reliable internet connection and hence it becomes a constraint in production. So what we need is a model that can run on our mobile devices.</p>
+
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*vCILduBp-gylqOp7WUme0Q.png" alt=""></p>
+
+<p>**So what’s the problem? **We can train a small network that can run on the limited computational resource of our mobile device. But there is a problem in this approach. Small models can’t extract many complex features that can be handy in generating predictions unless you devise some elegant algorithm to do so. Though ensemble of small models gives good results but unfortunately making predictions using a whole ensemble of models is cumbersome and may be too computationally expensive to allow deployment to a large number of users. In this case, we resort to either of the 2 techniques:</p>
+
+<ul>
+  <li>
+    <p>Knowledge Distillation</p>
+  </li>
+  <li>
+    <p>Model Compression</p>
+  </li>
+  <li>
+    <p>If you have developed a better solution or if I might have missed something, please mention in the comments 🙂</p>
+  </li>
+</ul>
+
+<p>In this blog, we will look at <strong>Knowledge Distillation</strong>. I will cover model compression in an upcoming blog.</p>
+
+<p>So knowledge distillation is a simple way to improve the performance of deep learning models on mobile devices. In this process, we train a large and complex network or an ensemble model which can extract important features from the given data and can, therefore, produce better predictions. Then we train a small network with the help of the cumbersome model. This small network will be able to produce comparable results, and in some cases, it can even be made capable of replicating the results of the cumbersome network.</p>
+
+<p><img src="https://cdn-images-1.medium.com/max/2456/1*r_eguFXxHkAzDRu8tM-95g.jpeg" alt=""></p>
+
+<p>For example, Since GoogLeNet is a very cumbersome (means deep and complex) network, its deepness gives the ability to extract and complex features and its complexity gives it the power to remain accurate. But the model is heavy enough that one for sure need a large amount of memory and a powerful GPU to perform large and complex calculations. So that’s why we need to transfer the knowledge learned by this model to a much smaller model which can easily be used in mobile.</p>
+
+<h3 id="about-cumbersome-models">
+<a class="anchor" href="#about-cumbersome-models" aria-hidden="true"><span class="octicon octicon-link"></span></a>About Cumbersome Models</h3>
+
+<p>Cumbersome models learn to discriminate between a large number of classes. The normal <strong>training objective</strong> is to maximize the average log probability of the correct answer, and it assigns a probability to all the classes, with some classes given small probabilities with respect to others. The relative probabilities of incorrect answers tell us a lot about how this complex model tends to generalize. An image of a Car, for example, may only have a very small chance of being mistaken for a Truck, but that mistake is still many times more probable than mistaking it for a Cat.</p>
+<blockquote>
+  <p>Note that objective function should be chosen such that it generalizes well to new data. So it should be kept in mind while selecting an appropriate objective function that it shouldn’t be selected in such a way that it optimizes well on training data.</p>
+</blockquote>
+
+<p>Since these operations will be quite heavy for mobile during the performance, so to deal with this situation, we have to transfer the knowledge of the cumbersome model to a small model which can be easily exported to mobile devices. To achieve this, we can consider the cumbersome model as <strong>Teacher Network</strong> and our new small model as <strong>Student Network.</strong></p>
+
+<h3 id="teacher-and-student">
+<a class="anchor" href="#teacher-and-student" aria-hidden="true"><span class="octicon octicon-link"></span></a>Teacher and Student</h3>
+
+<p>You can ‘distill’ the large and complex network in another much smaller network, and the smaller network does a reasonable job of approximating the original function learned by a deep network.</p>
+
+<center>![](https://cdn-images-1.medium.com/max/2000/1*6G6HHityX_zBgrFfR_z-UQ.png)</center>
+
+<p>However, there is a catch, the distilled model (<strong>student</strong>), is trained to mimic the output of the larger network (<strong>teacher</strong>), instead of training it on the raw data directly. This has something to do with how the deeper network learns hierarchical abstractions of the features.</p>
+
+<h3 id="so-how-is-this-transfer-of-knowledge-done">
+<a class="anchor" href="#so-how-is-this-transfer-of-knowledge-done" aria-hidden="true"><span class="octicon octicon-link"></span></a>So how is this transfer of knowledge done?</h3>
+
+<center>![](https://cdn-images-1.medium.com/max/2964/1*WxFiH3XDY1-28tbyi4BGDA.png)</center>
+
+<p>The transferring of the generalization ability of the cumbersome model to a small model can be done by the use of class probabilities produced by the cumbersome model as “soft targets” for training the small model. For this transfer stage, we use the same training set or a separate “transfer” set as used for training the cumbersome model. When the cumbersome model is a large ensemble of simpler models, we can use arithmetic or geometric mean of their individual predictive distributions as the soft targets. When the soft targets have high entropy, they provide much more information per training case than hard targets and much less variance in the gradient between training cases, so the small model can often be trained on much less data than the original cumbersome model while using a much higher learning rate.</p>
+
+<center>![](https://cdn-images-1.medium.com/max/2000/1*ekrPR2eYbD2Y9HWTV5YGxw.jpeg)</center>
+
+<p>Much of the information about the learned function resides in the ratios of very small probabilities in the soft targets. This is valuable information that defines a rich similarity structure over the data (i. e. it says which 2’s look like 3’s and which look like 7’s or which “golden retriever” looks like “Labrador”) but it has very little influence on the cross-entropy cost function during the transfer stage because the probabilities are so close to zero.</p>
+
+<h3 id="distillation">
+<a class="anchor" href="#distillation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Distillation</h3>
+
+<p>For distilling the learned knowledge we use <strong>Logits</strong> (the inputs to the final softmax). Logits can be used for learning the small model and this can be done by minimizing the squared difference between the logits produced by the cumbersome model and the logits produced by the small model.</p>
+
+<center>
+<img src="https://cdn-images-1.medium.com/max/2000/1*yJD5529FbmtbZ-GC25_ITw.png">
+
+*Softmax with Temperature*
+</center>
+
+<p>For high temperatures (<strong><em>T -&gt; inf</em></strong>), all actions have nearly the same probability and at the lower the temperature (<strong><em>T -&gt; 0</em></strong>), the more expected rewards affect the probability. For low temperature, the probability of the action with the highest expected reward tends to 1.</p>
+
+<p>In distillation, we raise the temperature of the final softmax until the cumbersome model produces a suitably soft set of targets. We then use the same high temperature when training the small model to match these soft targets.</p>
+
+<h3 id="objective-function">
+<a class="anchor" href="#objective-function" aria-hidden="true"><span class="octicon octicon-link"></span></a>Objective Function</h3>
+
+<p>The first objective function is the cross-entropy with the soft targets and this cross entropy is computed using the same high temperature in the softmax of the distilled model as was used for generating the soft targets from the cumbersome model.</p>
+
+<p>The second objective function is the cross-entropy with the correct labels and this is computed using exactly the same logits in softmax of the distilled model but at a temperature of 1</p>
+
+<center>
+<img src="https://cdn-images-1.medium.com/max/2000/1*rbi3dpUQaQjI-ezbyDzhug.png">
+</center>
+
+<h3 id="training-ensembles-of-specialists">
+<a class="anchor" href="#training-ensembles-of-specialists" aria-hidden="true"><span class="octicon octicon-link"></span></a>Training ensembles of specialists</h3>
+
+<p>Training an ensemble of models is a very simple way to take advantage of parallel computation. But there is an objection that an ensemble requires too much computation at test time. But this can be easily dealt with the technique we are learning. And so “Distillation” can be used to deal with this allegation.</p>
+
+<center><img src="https://cdn-images-1.medium.com/max/2000/1*aIBLpCWRF5J1kbXE_s9KcQ.png"></center>
+
+<h3 id="specialist-models">
+<a class="anchor" href="#specialist-models" aria-hidden="true"><span class="octicon octicon-link"></span></a><strong>Specialist Models</strong>
+</h3>
+
+<p><em>Specialist models and one generalist model make our one cumbersome model</em>. Generalist Model is trained on all training data and Specialist Models focus on a different confusable subset of the classes can reduce the total amount of computation required to learn an ensemble. The main problem with specialists is that they overfit very easily. But this overfitting may be prevented by using soft targets.</p>
+
+<h3 id="reduce-overfitting-in-specialist-models">
+<a class="anchor" href="#reduce-overfitting-in-specialist-models" aria-hidden="true"><span class="octicon octicon-link"></span></a>Reduce Overfitting in Specialist Models</h3>
+
+<p>To reduce overfitting and share the work of learning lower level feature detectors, each specialist model is initialized with the weights of the generalist model. These weights are then slightly modified by training the specialist, with half its examples coming from its special subset, and half sampled at random from the remainder of the training set. After training, we can correct for the biased training set by incrementing the logit of the dustbin class by the log of the proportion by which the specialist class is oversampled.</p>
+
+<center><img src="https://cdn-images-1.medium.com/max/2000/1*TDMCC6ZHzxQo-pn6Y-ZZWA.png"></center>
+
+<h3 id="assign-classes-to-specialists">
+<a class="anchor" href="#assign-classes-to-specialists" aria-hidden="true"><span class="octicon octicon-link"></span></a>Assign classes to Specialists</h3>
+
+<p>We apply a clustering algorithm to the covariance matrix of the predictions of our generalist model so that a set of classes Sm that are often predicted together will be used as targets for one of our specialist models, m. So we apply K-means clustering to the columns of the covariance matrix to get our required clusters or classes.</p>
+
+<center>
+<img src="https://cdn-images-1.medium.com/max/2000/1*Coch85xMgRVk6UbS5zjzVg.png">
+
+Assign a score to an ordered covariance matrix. High correlations within a cluster improve the score. High correlations between clusters decease the score.</center>
+
+<blockquote>
+  <p>Covariance/Correlation clustering provides a method for clustering a set of objects into the optimum number of clusters without specifying that number in advance.</p>
+</blockquote>
+
+<h3 id="performing-inference">
+<a class="anchor" href="#performing-inference" aria-hidden="true"><span class="octicon octicon-link"></span></a>Performing inference</h3>
+
+<ul>
+  <li>
+    <p>For each test case, we find the ‘n’ most probable classes according to the generalist model. Call this set of classes k.</p>
+  </li>
+  <li>
+    <p>We then take all the specialist models, m, whose special subset of confusable classes, Sm, has a non-empty intersection with k and call this the active set of specialists Ak (note that this set may be empty). We then find the full probability distribution q over all the classes that minimizes:</p>
+  </li>
+</ul>
+
+<center><img src="https://cdn-images-1.medium.com/max/2000/1*NRXkBNMx4VE5xDYGl5aB-w.png"></center>
+
+<center><img src="https://cdn-images-1.medium.com/max/2000/1*MpnL9tKLfqAdhAJkY6hnwA.png"></center>
+
+<p>KL denotes the KL divergence, and p^m, p^g denote the probability distribution of a specialist model or the generalist full model. The distribution p^m is over all the specialist classes of m plus a single dustbin class, so when computing its KL divergence from the full q distribution we sum all of the probabilities that the full q distribution assigns to all the classes in m’s dustbin.</p>
+
+<h3 id="soft-targets-as-regularizers">
+<a class="anchor" href="#soft-targets-as-regularizers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Soft Targets as Regularizers</h3>
+
+<p>Soft Targets or labels predicted from a model contain more information that binary hard labels due to the fact that they encode similarity measures between the classes.</p>
+
+<p>Incorrect labels tagged by the model describe co-label similarities, and these similarities should be evident in future stages of learning, even if the effect is diminished. For example, imagine training a deep neural net on a classification dataset of various dog breeds. In the initial few stages of learning the model will not accurately distinguish between similar dog-breeds such as a Belgian Shepherd versus a German Shepherd. This same effect, although not so exaggerated, should appear in later stages of training. If given an image of a German Shepherd, the model predicts the class German Shepherd with a high-accuracy, the next highest predicted dog should still be a Belgian Shepherd or a similar looking dog. Over-fitting starts to occur when the majority of these co-label effects begin to disappear. By forcing the model to contain these effects in the later stages of training, we reduced the amount of over-fitting.</p>
+
+<blockquote>
+  <p><strong>Though using soft targets as Regularizers is not considered very effective.</strong></p>
+</blockquote>
+
+<blockquote>
+  <p><strong>The paper <a href="https://arxiv.org/abs/1503.02531v1">Distilling the Knowledge in a Neural Network</a> is written by Geoffrey Hinton, Oriol Vinyals, Jeff Dean</strong></p>
+</blockquote>
+
+<h3 id="associated-code-can-be-found-at-github-please-follow-me-on-twitter-theujjwal9">
+<a class="anchor" href="#associated-code-can-be-found-at-github-please-follow-me-on-twitter-theujjwal9" aria-hidden="true"><span class="octicon octicon-link"></span></a><em>Associated Code can be found at <a href="https://github.com/Ujjwal-9/Knowledge-Distillation">Github</a>. Please follow me on twitter <a href="https://twitter.com/theujjwal9">@theujjwal9</a></em>
+</h3>
+
+
+  </div><a class="u-url" href="/blog/dl/distillation/2018/05/04/knowledge-distillation.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/blog/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/blog/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/blog/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Approximating the Universe</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/ujjwal-9" title="ujjwal-9"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/theujjwal9" title="theujjwal9"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

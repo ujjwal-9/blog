@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://ujjwal9.ml/blog/dl/distillation/2018/05/04/knowledge-distillation.html</loc>
+<lastmod>2018-05-04T00:00:00-05:00</lastmod>
+</url>
+<url>
+<loc>http://ujjwal9.ml/blog/maths/video/2019/04/06/heartrate-detection.html</loc>
+<lastmod>2019-04-06T00:00:00-05:00</lastmod>
+</url>
+<url>
+<loc>http://ujjwal9.ml/blog/docker/dl-tools/2020/12/24/docker.html</loc>
+<lastmod>2020-12-24T00:00:00-06:00</lastmod>
+</url>
+<url>
+<loc>http://ujjwal9.ml/blog/medicine/2020/12/28/dicom-intro.html</loc>
+<lastmod>2020-12-28T00:00:00-06:00</lastmod>
+</url>
+<url>
 <loc>http://ujjwal9.ml/blog/about/</loc>
 </url>
 <url>
