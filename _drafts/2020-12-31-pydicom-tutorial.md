@@ -4,7 +4,7 @@ layout: post
 use_math: true
 description: Pydicom Tutorial 
 categories: [medicine, library]
-title:  Introduction to PyDICOM
+title:  Introduction to Pydicom
 image: images/pydicom-tutorial/cover.png
 ---
 
