@@ -2,7 +2,7 @@
 toc: true
 layout: post
 use_math: true
-description: What is dicom? 
+description: What is dicom? And OHIF Viewer Walkthrough.
 categories: [medicine]
 title:  Introduction to DICOM Standard
 image: images/dicom-intro/cover.jpg
@@ -306,11 +306,11 @@ Report view has report on doc/pdf format displayed in viewer.
 
 # References
 
-- [digitmedicine.com](https://www.digitmedicine.com/article.asp?issn=2226-8561;year=2015;volume=1;issue=2;spage=63;epage=66;aulast=Gupta)
+- ["Significance of digital imaging and communication in medicine in digital imaging". digitmedicine.com](https://www.digitmedicine.com/article.asp?issn=2226-8561;year=2015;volume=1;issue=2;spage=63;epage=66;aulast=Gupta)
 - [Dicom Website](https://www.dicomstandard.org/)  
 - [Dicom @ OFFIS](https://dicom.offis.de/)
-- [medico-eng.com](http://www.medico-eng.com/en/products.php?id=71)
-- [PUBMED NCBI](https://pubmed.ncbi.nlm.nih.gov/12080929/)
-- [medicalconnections.co.uk](https://www.medicalconnections.co.uk/kb/counting-studies-series-and-instances/)
+- ["Picture archiving and communication system". medico-eng.com](http://www.medico-eng.com/en/products.php?id=71)
+- ["The case for RIS/PACS integration". PUBMED NCBI](https://pubmed.ncbi.nlm.nih.gov/12080929/)
+- ["Counting Studies, Series and Instances". medicalconnections.co.uk](https://www.medicalconnections.co.uk/kb/counting-studies-series-and-instances/)
 
 
