@@ -400,3 +400,7 @@ Report view has report on doc/pdf format displayed in viewer.
 - ["Counting Studies, Series and Instances". medicalconnections.co.uk](https://www.medicalconnections.co.uk/kb/counting-studies-series-and-instances/)
 
 
+--- 
+
+**Follow me on twitter [@theujjwal9](https://twitter.com/theujjwal9)**
+

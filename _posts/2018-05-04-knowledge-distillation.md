@@ -152,7 +152,9 @@ Incorrect labels tagged by the model describe co-label similarities, and these s
 > Though using soft targets as Regularizers is not considered very effective.
 
 
+Associated Code can be found at [Github](https://github.com/Ujjwal-9/Knowledge-Distillation).
 
+--- 
 
-**Associated Code can be found at [Github](https://github.com/Ujjwal-9/Knowledge-Distillation). Follow me on twitter [@theujjwal9](https://twitter.com/theujjwal9)**
+**Follow me on twitter [@theujjwal9](https://twitter.com/theujjwal9)**
 
