@@ -304,17 +304,23 @@ Vertical mouse movement changes window level and horizontal movement changes win
 
 ## Visualization of slices
 
-<center><img src="/blog/images/dicom-intro/ohif-slice.gif"></center>
+<center>
+img src="/blog/images/dicom-intro/ohif-slice.gif">
+</center>
 
 ## 2D Multiplanar Reconstruction (MPR)
 
-<center><img src="/blog/images/dicom-intro/ohif-2d-mpr.png"></center>
+<center>
+<img src="/blog/images/dicom-intro/ohif-2d-mpr.png">
+</center>
 
 The MPR tool provided within the Viewer can be used to reconstruct images in orthogonal planes (coronal, sagittal, axial or oblique, depending on what the base image plane is). This can help to create a visualization of the anatomy which was not possible using base images alone.
 
 ## Report view
 
-<center><img src="/blog/images/dicom-intro/ohif-report.png"></center>
+<center>
+<img src="/blog/images/dicom-intro/ohif-report.png">
+</center>
 
 Report view has report on doc/pdf format displayed in viewer.
 
