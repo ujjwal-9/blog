@@ -16,7 +16,8 @@ http://ujjwal9.ml/blog/
 
 # Drafts
 
-- How to read CT Scans.
+- How to read brain CT scans.
+- How to read a topographic maps.
 
 
 > Recommendations are more than welcome. Please create a issue for the same.
