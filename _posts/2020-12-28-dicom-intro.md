@@ -100,8 +100,8 @@ Patient has  studies, studies have series which are scans and scans may have mul
 
 <center>
 
-<img src="/blog/images/dicom-intro/query.png">
-<!-- <table style="width:100%">
+<!-- <img src="/blog/images/dicom-intro/query.png"> -->
+<table>
 <thead>
 <tr>
 <th>Attribute Name</th>
@@ -153,7 +153,7 @@ Patient has  studies, studies have series which are scans and scans may have mul
 <td>The SOP Classes contained in the Study.</td>
 </tr>
 </tbody>
-</table> -->
+</table>
 
 </center>
 
@@ -305,7 +305,7 @@ Vertical mouse movement changes window level and horizontal movement changes win
 ## Visualization of slices
 
 <center>
-img src="/blog/images/dicom-intro/ohif-slice.gif">
+<img src="/blog/images/dicom-intro/ohif-slice.gif">
 </center>
 
 ## 2D Multiplanar Reconstruction (MPR)
