@@ -4,8 +4,9 @@ title: About Me
 permalink: /about/
 ---
 
-This website is powered by **[fastpages](https://github.com/fastai/fastpages)** [^1].
+I am researcher exploring domains of Artificial Intelligence. My research interest is at the intersection of Computer Vision and Representation Learning. My primary research focus is to build systems that offer true disentangled abstraction of human psychology and challenges human consciousness. I plan to pursue my vision for such systems by extending my approach to reinforcement learning and non-differentiable intelligence.
+
+Webpage: [ujjwal9.ml](https://ujjwal-9.github.io/)
 
 
-
-[^1]:a blogging platform that natively supports Jupyter notebooks in addition to other formats.
+Twitter: [@theujjwal9](https://twitter.com/@theujjwal9)
