@@ -81,19 +81,15 @@ If there is overlap between 2 adjacent slices that is `slice thickness > slice i
 def get_pixels_hu(scans):
     image = np.stack([s.pixel_array for s in scans])
     image = image.astype(np.int16)
-    # Set outside-of-scan pixels to 0
-    # The intercept is usually -1024, so air is approximately 0
-    image[image == -2000] = 0
     
     # Convert to Hounsfield units (HU)
-    intercept = scans[0].RescaleIntercept
     slope = scans[0].RescaleSlope
     
     if slope != 1:
         image = slope * image.astype(np.float64)
         image = image.astype(np.int16)
         
-    image += np.int16(intercept)
+    image += np.int16(scans[0].RescaleIntercept)
     
     return np.array(image, dtype=np.int16)
 ```
@@ -108,11 +104,11 @@ HU scaling is explained in my [dicom standard blog](http://ujjwal9.ml/blog/medic
 slices = sorted(patient_dicom, key=lambda s: s.SliceLocation)
 
 # pixel aspects, assuming all slices are the same
-ps = slices[0].PixelSpacing
-ss = slices[0].SliceThickness
-ax_aspect = ps[1]/ps[0]
-sag_aspect = ps[1]/ss
-cor_aspect = ss/ps[0]
+pixel_spacing = slices[0].PixelSpacing
+slice_thickness = slices[0].SliceThickness
+ax_aspect = pixel_spacing[1]/pixel_spacing[0]
+sag_aspect = pixel_spacing[1]/slice_thickness
+cor_aspect = slice_thickness/pixel_spacing[0]
 
 # create 3D array
 img_shape = list(slices[0].pixel_array.shape)
@@ -123,7 +119,29 @@ img3d = np.zeros(img_shape)
 for i, s in enumerate(slices):
     img2d = s.pixel_array
     img3d[:, :, i] = img2d
+    
+# print(img3d.shape)
+
+# plot 3 orthogonal slices
+a1 = plt.subplot(1, 3, 1)
+a1.axis('off')
+plt.imshow(img3d[:, :, img_shape[2]//2], cmap='gray')
+a1.set_aspect(ax_aspect)
+
+a2 = plt.subplot(1, 3, 2)
+a2.axis('off')
+plt.imshow(img3d[:, img_shape[1]//2, :], cmap='gray')
+a2.set_aspect(sag_aspect)
+
+a3 = plt.subplot(1, 3, 3)
+a3.axis('off')
+plt.imshow(img3d[img_shape[0]//2, :, :].T, cmap='gray')
+a3.set_aspect(cor_aspect)
 ```
+
+<center>
+<img src="/blog/images/pydicom-tutorial/mpr.png">
+</center>
 
 > Multiplanar reformation or reconstruction (MPR) involves the process of converting data from an imaging modality acquired in a certain plane, usually axial, into another plane. It is most commonly performed with thin-slice data from volumetric CT in the axial plane, but it may be accomplished with scanning in any plane and whichever modality capable of cross-sectional imaging, including magnetic resonance imaging (MRI), PET and SPECT.
 
@@ -141,6 +159,12 @@ vmax = level + width/2
 plt.imshow(hu_pixels, cmap='gray', vmin=vmin, vmax=vmax)
 plt.show()
 ```
+
+Without Windowing             |  With Windowing
+:-------------------------:|:-------------------------:
+![](/blog/images/pydicom-tutorial/windowing-org.png)  |  ![](/blog/images/pydicom-tutorial/windowing-new.png)
+
+
 
 ![](https://www.stepwards.com/wp-content/uploads/2019/12/Screen-Shot-2019-10-06-at-8.45.17-PM-e1577078248771.jpg "Windows for various scans.")
 
