@@ -24,7 +24,7 @@ Brain imaging methods allow neuroscientists to see inside the living brain. Thes
 
 # Introduction
 
-Understanding brain anatomy is important to read CT scans. In this blog we will got through key anatomy which will make CT scans more apparent to you. For the first, CT scans are viewed from below, so right side of the brain is on left side of viewer. Front part of head (Anterior) is on top.
+Understanding brain anatomy is important to read CT scans. In this blog we will go through key anatomy which will make CT scans more apparent to you. For the first, CT scans are viewed from below, so right side of the brain is on left side of viewer. Front part of head (Anterior) is on top.
 
 ![](/blog/images/brain-anatomy-ct/sides.png "CT Scan Orientation")
 
