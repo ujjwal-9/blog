@@ -86,8 +86,10 @@ Tentorium is an extension of the dura; it separates the cerebrum (brain) from th
 
 ![](https://upload.wikimedia.org/wikipedia/commons/b/b7/Illu_tentorium.jpg)
 
-
-![](http://sinaiem.org/wp-content/uploads/2015/12/bleed.png "Tentorial Subdural Hemorrhage")
+<center>
+<img src="http://sinaiem.org/wp-content/uploads/2015/12/bleed.png">
+</center>
+<!-- ![](http://sinaiem.org/wp-content/uploads/2015/12/bleed.png "Tentorial Subdural Hemorrhage") -->
 
 
 [Source](https://sinaiem.org/tentorial-subdural-hemorrhage/#:~:text=They%20may%20resemble%20intraparenchymal%20bleed,portion%20of%20the%20occipital%20lobes.)
@@ -223,9 +225,7 @@ There are some structures in brain which are normal if calcified.
 
 # Final Words
 
-These are notes to me which helped me remember this anatomy. I follwed learn by writing methodology here. Many things are missed here please follow medical resources for that.
+These are notes to me which helped me remember this anatomy. I followed learn by writing methodology here. Many things are missed, here please follow medical resources for that.
 
 ---
 Please follow [Radiology-Masterclass FB Page](https://www.facebook.com/pages/Radiology-Masterclass/105315179515082)
-
-Thanks
