@@ -86,10 +86,8 @@ Tentorium is an extension of the dura; it separates the cerebrum (brain) from th
 
 ![](https://upload.wikimedia.org/wikipedia/commons/b/b7/Illu_tentorium.jpg)
 
-<center>
-<img src="http://sinaiem.org/wp-content/uploads/2015/12/bleed.png">
-</center>
-<!-- ![](http://sinaiem.org/wp-content/uploads/2015/12/bleed.png "Tentorial Subdural Hemorrhage") -->
+
+![](http://sinaiem.org/wp-content/uploads/2015/12/bleed.png "Tentorial Subdural Hemorrhage")
 
 
 [Source](https://sinaiem.org/tentorial-subdural-hemorrhage/#:~:text=They%20may%20resemble%20intraparenchymal%20bleed,portion%20of%20the%20occipital%20lobes.)
