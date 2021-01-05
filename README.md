@@ -16,8 +16,9 @@ http://ujjwal9.ml/blog/
 
 # Drafts
 
-- How to read brain CT scans.
-- How to read a topographic maps.
+- How to read brain CT scans
+- How to read a topographic maps
+- Theorem Provers - Lean Intro
 
 
 > Recommendations are more than welcome. Please create a issue for the same.
