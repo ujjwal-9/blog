@@ -8,6 +8,10 @@ title:  Introduction to Brain Anatomy
 image: images/brain-anatomy-ct/cover.jpg
 ---
 
+This blog doesn't dig deep into anatomy and may miss many key terms. Its purpose is to be familiar with brain anatomy for CT. It's not for medical students although feel free to read and let me know what else can be added to it.
+
+I would also like to give credits for all the images and content to [radiologymasterclass.co.uk](https://www.radiologymasterclass.co.uk/)
+
 CT scans use a series of X-ray beams passed through the head. The images are then developed on sensitive film. This method creates cross-sectional images of the brain and shows the structure of the brain, but not its function.
 
 Brain imaging methods allow neuroscientists to see inside the living brain. These methods help neuroscientists:
@@ -105,6 +109,12 @@ A midline shift may occur when the pressure exerted by the buildup of blood and 
 
 The brain is surrounded by CSF fluids within the sulci, fissures and basal cisterns. 
 
+It serves three main functions:
+
+- Protection – acts as a cushion for the brain, limiting neural damage in cranial injuries.
+- Buoyancy – immersion in CSF reduces net weight of brain to ~25 grams. This prevents excessive pressure on the base of the brain.
+- Chemical stability – example. it maintains low extracellular K+ for synaptic transmission.
+
 > CSF has lower density than gray or white matter (discussed ahead), hence appear darker in CT scans. 
 
 - Gyrus = a fold of the brain surface (plural = gyri)
@@ -123,4 +133,99 @@ These are components of brain which serperate the two halves of the brain.
 
 ### Ventricles
 
-Spaces inside brain containing CSF.
+Ventricles are spaces inside brain containing CSF and responsible for its production. There are 4 ventricles in brain:
+- Lateral Ventricles (counted as 2)
+- Third Ventricle
+- Fourth Ventricle
+
+![](https://teachmeanatomy.info/wp-content/uploads/Superior-View-of-Cast-of-Ventricular-System.jpg "Ventricles")
+
+**Lateral ventricles**
+
+They are located on either side of brain.
+
+![](https://www.radiologymasterclass.co.uk/images/ct/ct-brain/anatomy/ventricles_lat.jpg "Lateral Ventricle")
+
+The marked choroid plexus produces CSF and is usually calcified (hardened by deposition of or conversion into calcium carbonate or another insoluble calcium compound) for adults.
+
+> **The volume of the lateral ventricles increases with age.**
+
+**Third Ventricle**
+
+![](https://www.radiologymasterclass.co.uk/images/ct/ct-brain/anatomy/ventricles_third.jpg "Third Ventricle")
+
+Small white colored `Foramen of Monro` is a messenger between lateral and third ventricle.
+
+**Fourth Ventricle**
+
+![](https://www.radiologymasterclass.co.uk/images/ct/ct-brain/anatomy/ventricles_fourth.jpg "Fourth Ventricle")
+
+> CSF in the basal cisterns surrounds the brain stem structures.
+
+
+## Grey matter v white matter
+
+ ![](https://www.radiologymasterclass.co.uk/images/ct/ct-brain/anatomy/grey_v_white.jpg "Gray Matter vs White Matter")
+
+ > White matter is located centrally and appears blacker than grey matter due to its relatively low density but pathological processes may increase or decrease the differentiation in density between grey and white matter.
+
+ **Gray Matter** comprises `bitcoin (BITC)`. Basal ganglia, Insula, Thalamus, and Cortex.
+
+ ![](https://www.radiologymasterclass.co.uk/images/ct/ct-brain/anatomy/grey.jpg "Gray Matter")
+
+ Lets start with cortex, probably most recognized among all. It has huge number of variants in computer science fields also :laughing: like [cortexnet](https://engineering.purdue.edu/elab/CortexNet/), [Cortex.Net](https://jspuij.github.io/Cortex.Net.Docs), etc.
+
+**Cerebral cortex** is a layer of grey matter formed in gyri over the entire brain surface. 
+
+Cerebral cortex is required for voluntary activities, language, speech, and multiple brain functions, such as thinking and memory. In short you conscious behaviour (as per science).
+
+> The cerebrum is the largest brain structure and part of the forebrain (or prosencephalon). Its prominent outer portion, the cerebral cortex, not only processes sensory and motor information but enables consciousness, our ability to consider ourselves and the outside world.
+
+[Source](https://www.visiblebody.com/learn/nervous/brain#:~:text=The%20cerebrum%20is%20the%20largest,ourselves%20and%20the%20outside%20world.)
+
+Next big thing in `BITC` is probably **thalamus**. It has many essential roles in human physiology.
+
+> **Thalamus** is basically a translator used to convert high level impulses from receptors to low level signals for cerebral cortex.
+
+As for clinical significance, insults to thalamus may result in thalamic pain syndrome.
+
+![](https://www.radiologymasterclass.co.uk/images/ct/ct-brain/anatomy/basal_ganglia_2.jpg "Thalamus and Basal ganglia")
+
+**Basal ganglia = lentiform nucleus + caudate nucleus**
+
+> Important thing to note about **basal ganglia**, insults to this component may cause movement disorders.
+
+[Symptoms to detect damage basal ganglia](https://www.flintrehab.com/basal-ganglia-brain-damage/)
+
+The movement disorders are generally well treated using neuroplasticity of brain - ability of brain to repair itself- meaning you excersice the affected part often.
+
+Last of `BITC` - Insula. Name may be small but it regulates immune system itself among other major functions such as taste.
+
+**White Matter** 
+
+The internal capsules and corpus callosum are clinically important white matter tracts.
+
+**Corpus Callosum** is visible in Sagittal CT's and connects white matter of the left and right cerebral hemispheres. Its clinical significance is that it can let lesions of brain to grow from one hemisphere to other. Elsewhere flax acts as a barrier to such invasions.
+
+![](https://www.radiologymasterclass.co.uk/images/ct/ct-brain/anatomy/corpus_callosum.jpg)
+
+**Internal Capsule**
+
+> Even a small insult to the internal capsule can have a profound affect on motor and sensory function.
+
+![](https://www.radiologymasterclass.co.uk/images/ct/ct-brain/anatomy/internal_capsule.jpg)
+
+## Calcified Structures
+
+There are some structures in brain which are normal if calcified.
+[Please refer this](https://www.radiologymasterclass.co.uk/tutorials/ct/ct_brain_anatomy/ct_brain_anatomy_choroid_calcified).
+
+
+# Final Words
+
+These are notes to me which helped me remember this anatomy. I follwed learn by writing methodology here. Many things are missed here please follow medical resources for that.
+
+---
+Please follow [Radiology-Masterclass FB Page](https://www.facebook.com/pages/Radiology-Masterclass/105315179515082)
+
+Thanks
