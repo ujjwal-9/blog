@@ -66,7 +66,7 @@ Sinuses Overlay on Face             |  Sinuses Overlay on CT | Frontal Sinuses o
 
 > The mastoid air cells are continuous with the middle ear.
 
-> In case of traumna, fluid in the sphenoid sinus may be a sign of a basal skull fracture.
+> In case of trauma, fluid in the sphenoid sinus may be a sign of a basal skull fracture.
 
 CT Scan for Basal skull fracture           |  Symptoms
 :-------------------------:|:-------------------------:
