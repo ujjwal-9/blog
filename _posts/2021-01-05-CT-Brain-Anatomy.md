@@ -294,7 +294,7 @@ There are some structures in brain which are normal if calcified.
 
 # Final Words
 
-These are notes to me which helped me remember this anatomy. I followed learn by writing methodology here. Many things are missed, here please follow medical resources for that.
+These are notes to me which helped me remember this anatomy. I followed learn by writing methodology here. Many things are missed here, please follow medical resources for that.
 
 
 # Refernces
