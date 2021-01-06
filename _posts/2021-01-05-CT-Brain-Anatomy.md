@@ -299,8 +299,10 @@ These are notes to me which helped me remember this anatomy. I followed learn by
 
 # Refernces
 
+- [radiologymasterclass.co.uk](https://www.radiologymasterclass.co.uk/)
 - [kenhub.com](https://www.kenhub.com/)
-- 
+- [mayoclinic.org](https://www.mayoclinic.org/)
+- [teachmeanatomy.info](https://teachmeanatomy.info/)
 
 
 ---
