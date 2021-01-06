@@ -236,7 +236,7 @@ window.onload = wrap_img;
   <span class="na">deeplearning</span><span class="pi">:</span>
     <span class="na">build</span><span class="pi">:</span> <span class="s">.</span>
     <span class="na">volumes</span><span class="pi">:</span>
-      <span class="pi">-</span> <span class="s">.:/app</span>
+      <span class="pi">-</span> <span class="s">./images:/app/images</span>
 </code></pre></div></div>
 
 <p>Here <code class="language-plaintext highlighter-rouge">volume</code> keyword specifies to mount current directory on local file system to /images on container. So the changes made to those files mounted at /images will also be reflected in local file system.</p>
