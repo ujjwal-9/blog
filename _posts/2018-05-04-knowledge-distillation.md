@@ -2,7 +2,7 @@
 toc: true
 layout: post
 description: Transforming large deep learning models to smaller models woith imporved perform.
-categories: [dl, distillation]
+categories: [dl, compression]
 title:  Knowledge Distillation
 image: https://cdn-images-1.medium.com/max/2000/1*6G6HHityX_zBgrFfR_z-UQ.png
 ---
