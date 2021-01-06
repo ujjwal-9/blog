@@ -242,7 +242,7 @@ Brain has paired lobes.
 
  ![](https://www.radiologymasterclass.co.uk/images/ct/ct-brain/anatomy/grey.jpg "Gray Matter")
 
- Lets start with cortex, probably most recognized among all. It has huge number of variants in computer science fields also :laughing: like [cortexnet](https://engineering.purdue.edu/elab/CortexNet/), [Cortex.Net](https://jspuij.github.io/Cortex.Net.Docs), etc.
+ Lets start with cortex, probably most recognized among all. It has huge number of variants in computer science field also :laughing: like [cortexnet](https://engineering.purdue.edu/elab/CortexNet/), [Cortex.Net](https://jspuij.github.io/Cortex.Net.Docs), etc.
 
 **Cerebral cortex** is a layer of grey matter formed in gyri over the entire brain surface. 
 
