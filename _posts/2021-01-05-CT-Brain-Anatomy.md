@@ -76,11 +76,37 @@ CT Scan for Basal skull fracture           |  Symptoms
 
 ## Meninges
 
-Knowledge about meninges is essential for understanding intracranial bleeding in CT scans.
+Meninges refer to the membranous coverings of the brain and spinal cord.
+
+Knowledge about meninges is essential for understanding intracranial bleeding and infection (meningitis) in CT scans.
 
 ![](https://www.radiologymasterclass.co.uk/images/ct/ct-brain/anatomy/meninges_4.jpg "Meninges")
 
-### Tentorium cerebelli 
+There are three layers of meninges (Acronym: Digital Audio Player):
+- Dura mater
+- Arachnoid mater
+- Pia mater.
+
+![](https://teachmeanatomy.info/wp-content/uploads/Overview-of-the-Meninges-of-the-Brain.jpg "Overview of the meninges, and their relationship to the skull and brain")
+
+Functions of these covering include:
+- To act as supportive framework for the cerebral and cranial vasculature.
+- Acting with cerebrospinal fluid to protect the central nervous system from mechanical damage.
+
+### Dura Mater
+[Source](https://teachmeanatomy.info/neuroanatomy/structures/meninges/)
+
+Physical property: hick, tough and inextensible.
+
+Within the cranial cavity, the dura contains two connective tissue sheets:
+- Periosteal layer – lines the inner surface of the bones of the cranium.
+- Meningeal layer – only layer present in the vertebral column.
+
+
+[**Viewer Discretion is advised** - Autopsy of a patient with meningitis. The dura mater is being retracted to show a grossly swollen cerebrum with pus accumulation.](https://teachmeanatomy.info/wp-content/uploads/Dura-Mater-in-Meningitis.jpg)
+
+
+#### Tentorium cerebelli 
 
 Tentorium is an extension of the dura; it separates the cerebrum (brain) from the cerebellum.
 
@@ -93,6 +119,18 @@ Tentorium is an extension of the dura; it separates the cerebrum (brain) from th
 [Source](https://sinaiem.org/tentorial-subdural-hemorrhage/#:~:text=They%20may%20resemble%20intraparenchymal%20bleed,portion%20of%20the%20occipital%20lobes.)
 
 This is what Tentorial Subdural Hemorrhage look like on CT. It may resemble [intraparenchymal bleed](https://en.wikipedia.org/wiki/Intraparenchymal_hemorrhage#:~:text=Intraparenchymal%20hemorrhage%20(IPH)%20is%20one,a%20wide%20spectrum%20of%20disorders.) on CT.
+
+
+### Arachnoid Mater
+
+Underneath the arachnoid is a space known as the sub-arachnoid space. It contains cerebrospinal fluid, which acts to cushion the brain.
+
+### Pia Mater
+
+Physical Property: very thin, and tightly adhered to the surface of the brain and spinal cord.
+
+It covers contours of the brain (the gyri and fissures).
+
 
 ### Falx cerebri
 
@@ -146,9 +184,14 @@ They are located on either side of brain.
 
 ![](https://www.radiologymasterclass.co.uk/images/ct/ct-brain/anatomy/ventricles_lat.jpg "Lateral Ventricle")
 
+Function:
+- It ensures the communication between the third and fourth ventricles. 
+- It is to house the cerebrospinal fluid (CSF) and provide the passage for its circulation.
+
 The marked choroid plexus produces CSF and is usually calcified (hardened by deposition of or conversion into calcium carbonate or another insoluble calcium compound) for adults.
 
 > **The volume of the lateral ventricles increases with age.**
+
 
 **Third Ventricle**
 
@@ -156,12 +199,36 @@ The marked choroid plexus produces CSF and is usually calcified (hardened by dep
 
 Small white colored `Foramen of Monro` is a messenger between lateral and third ventricle.
 
+Abnormalities of the third ventricle are associated with various conditions including hydrocephalus, meningitis, and ventriculitis.
+
 **Fourth Ventricle**
 
 ![](https://www.radiologymasterclass.co.uk/images/ct/ct-brain/anatomy/ventricles_fourth.jpg "Fourth Ventricle")
 
 > CSF in the basal cisterns surrounds the brain stem structures.
 
+It has 2 function:
+- Production of cerebrospinal fluid (CSF) by choroid plexus
+- Circulation of CSF
+
+
+## Brain Lobes
+
+Brain has paired lobes.
+
+![](https://www.mayoclinic.org/-/media/kcms/gbs/patient-consumer/images/2013/11/15/17/44/ds00266_ds00810_im03440_bn7_lobesthu_jpg.png "Brain Lobes")
+
+![](https://www.radiologymasterclass.co.uk/images/ct/ct-brain/anatomy/lobes_parietal.jpg "Brain Lobes CT Scan")
+
+**Front Lobe** controls cognitive functions and voluntary movement.
+
+**Parietal Lobe** infers about temperature, taste, touch and movement from impulse recieved from receptors.
+
+**Occipital Lobe** is primarily responsible for vision.
+
+**Temporal Lobe** processes memories, integrating them with sensations of taste, sound, sight and touch.
+
+> Important point to note is that these lobes aren't well defined and are difficult to point to hence these are also refered to as 'regions'. Like temporal region, etc.
 
 ## Grey matter v white matter
 
@@ -170,6 +237,8 @@ Small white colored `Foramen of Monro` is a messenger between lateral and third 
  > White matter is located centrally and appears blacker than grey matter due to its relatively low density but pathological processes may increase or decrease the differentiation in density between grey and white matter.
 
  **Gray Matter** comprises `bitcoin (BITC)`. Basal ganglia, Insula, Thalamus, and Cortex.
+
+> Grey matter contains relatively few axons and a higher number of cell bodies.
 
  ![](https://www.radiologymasterclass.co.uk/images/ct/ct-brain/anatomy/grey.jpg "Gray Matter")
 
@@ -205,6 +274,8 @@ Last of `BITC` - Insula. Name may be small but it regulates immune system itself
 
 The internal capsules and corpus callosum are clinically important white matter tracts.
 
+> White matter has a high content of myelinated axons. 
+
 **Corpus Callosum** is visible in Sagittal CT's and connects white matter of the left and right cerebral hemispheres. Its clinical significance is that it can let lesions of brain to grow from one hemisphere to other. Elsewhere flax acts as a barrier to such invasions.
 
 ![](https://www.radiologymasterclass.co.uk/images/ct/ct-brain/anatomy/corpus_callosum.jpg)
@@ -224,6 +295,13 @@ There are some structures in brain which are normal if calcified.
 # Final Words
 
 These are notes to me which helped me remember this anatomy. I followed learn by writing methodology here. Many things are missed, here please follow medical resources for that.
+
+
+# Refernces
+
+- [kenhub.com](https://www.kenhub.com/)
+- 
+
 
 ---
 Please follow [Radiology-Masterclass FB Page](https://www.facebook.com/pages/Radiology-Masterclass/105315179515082)
