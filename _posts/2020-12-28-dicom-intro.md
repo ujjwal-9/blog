@@ -35,7 +35,7 @@ DICOM defines:
 - requirements for conforming devices and programs
 
 <center>
-<img src="https://www.softneta.com/wp-content/uploads/2019/02/SendToPACS-converting-files-to-dicom-workflow.png">
+<img src="https://www.softneta.com/wp-content/uploads/2019/02/SendToPACS-converting-files-to-dicom-workflow.png" width=700>
 </center>
 
 [Image Source](https://www.softneta.com/solutions/dicom-anonymization-for-medical-education-and-research/)
@@ -46,7 +46,7 @@ DICOM defines:
 > RIS (Radiology Information System) is a computerized database used by radiology departments to store, manipulate, and distribute patient radiological data and imagery.
 
 <center>
-<img src="https://assets.extrahop.com/images/infographics/dicom-protocol-workflow.png">
+<img src="https://assets.extrahop.com/images/infographics/dicom-protocol-workflow.png" width=600>
 </center>
 
 [Image Source](https://www.extrahop.com/company/blog/2016/introduction-to-dicom-protocol/)
