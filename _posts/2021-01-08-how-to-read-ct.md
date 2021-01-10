@@ -34,7 +34,7 @@ During examination of CT scans, it is important to review old scans as they may 
 
 > This elderly patient - who presented with acute confusion - has a large area of low density in the right frontal lobe seen on the current CT Review of a previous CT revealed that the abnormality in the brain was not new, but related to an infarct which occurred 5 months earlier The current CT appearances were not the cause of the acute confusion (urinary tract infection in this case)
 
-[Source](radiologymasterclass.co.uk/tutorials/ct/ct_acute_brain/ct_brain_details)
+[Source](https://wwww.radiologymasterclass.co.uk/tutorials/ct/ct_acute_brain/ct_brain_details)
 
 # Approach
 
@@ -353,7 +353,7 @@ IVH is divided in 2 types:
 
 > P(Primary) < P(Secondary) -> `P being Probablity`
 
-In above sctions on hypertensive hemorrhage and subarachnoid hemorrhage, IVH CT scan is shown.
+In above sections on hypertensive hemorrhage and subarachnoid hemorrhage, IVH CT scan is shown.
 
 
 ### Subpial hemorrhage
@@ -413,5 +413,5 @@ It describes the situation where the intracranial ventricular system is enlarged
 1. obstruction of CSF flow.
 2. altered CSF dynamics.
 
-
-<!-- hemorrhagic contusion, intraparenchymal hemorrhage, subdural hemorrhage, intraventricular hemorrhage, subarachnoid hemorrhage, extradural hemorrhage -->
+--- 
+Follow me on twitter [@theujjwal9](https://twitter.com/@theujjwal9)
