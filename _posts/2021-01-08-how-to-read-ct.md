@@ -414,4 +414,4 @@ It describes the situation where the intracranial ventricular system is enlarged
 2. altered CSF dynamics.
 
 --- 
-Follow me on twitter [@theujjwal9](https://twitter.com/@theujjwal9)
+**Follow me on twitter [@theujjwal9](https://twitter.com/@theujjwal9)**
