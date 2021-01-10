@@ -13,10 +13,10 @@ http://ujjwal9.ml/blog/
 - Docker Introduction
 - Dicom Introduction (and Ohif viewer Walkthrough)
 - Pydicom Tutorial
+- How to read brain CT scans
 
 # Drafts
 
-- How to read brain CT scans
 - How to read a topographic maps
 - Theorem Provers - Lean Intro
 
