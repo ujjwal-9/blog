@@ -76,6 +76,7 @@ This service is based over client-sever concept. They (Dicom applications) estab
 
 Queries to image archives (PACS) are made in 4 level of DICOM hierarchy:
 <center>
+<figure>
 <svg width="300" height="300" viewBox="0 0 596 1628" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g filter="url(#filter0_d)">
 <rect x="4" width="588" height="252" fill="white"/>
@@ -139,10 +140,10 @@ Queries to image archives (PACS) are made in 4 level of DICOM hierarchy:
 </filter>
 </defs>
 </svg>
+<figcaption>DICOM Data Model</figcaption>
+</figure>
 </center>
-<center>
-DICOM Data Model
-</center>
+
 <!-- ![](/blog/images/dicom-intro/heirarchy.png "DICOM data model") -->
 
 
@@ -247,7 +248,7 @@ A DICOM file consists of a header and image data sets.
 
 <center>
 
-<img src="/blog/images/dicom-intro/packet.jpg" width="225" height="400">
+<img src="/blog/images/dicom-intro/packet.jpg" width=250>
 
 </center>
 
