@@ -4,7 +4,7 @@ layout: post
 use_math: true
 description: What is dicom? And OHIF Viewer Walkthrough.
 categories: [medicine]
-title:  Introduction to DICOM Standard
+title:  DICOM Standards
 image: images/dicom-intro/dicom-arch.png
 ---
 [Dicom Website!](https://www.dicomstandard.org/)

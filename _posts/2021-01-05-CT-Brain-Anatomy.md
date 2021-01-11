@@ -2,9 +2,9 @@
 toc: true
 layout: post
 use_math: true
-description: Brain Anatomy using CT Scans 
+description: What is a CT scan? Brain components visible in CT scan and their relevance.
 categories: [medicine]
-title:  Introduction to Brain Anatomy
+title:  Brain Anatomy using CT Scans
 image: images/brain-anatomy-ct/cover.jpg
 ---
 

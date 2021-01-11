@@ -4,7 +4,7 @@ layout: post
 use_math: true
 description: Proving theorems the lean way.
 categories: [maths, lang]
-title:  Introduction to Lean
+title:  Lean Proof Assistant
 image: images/intro-lean/cover.png
 ---
 
@@ -71,7 +71,7 @@ begin
   begin
     -- minimum factor of a number is prime, but what about if M = 1
     refine min_fac_prime _,
-    -- so here we prove M != 1 or M > 1
+    -- so here we prove M != 1 (or M > 1)
     have : factorial N > 0 := factorial_pos N,
     -- this just automatically takes care of linear arithmatic required for proof
     linarith,
