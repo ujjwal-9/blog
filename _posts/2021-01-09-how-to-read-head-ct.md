@@ -394,7 +394,7 @@ Midline of the brain is curved due to pressure build up inside brain either due 
 </figure>
 </center>
 
-Caused due to either of the following:
+Caused due to following:
 1. extra-axial collection causing mass effect
 2. parenchymal tumor causing mass effect
 3. stroke with associated edema causing mass effect
