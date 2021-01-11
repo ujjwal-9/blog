@@ -26,7 +26,12 @@ Brain imaging methods allow neuroscientists to see inside the living brain. Thes
 
 Understanding brain anatomy is important to read CT scans. In this blog we will go through key anatomy which will make CT scans more apparent to you. For the first, CT scans are viewed from below, so right side of the brain is on left side of viewer. Front part of head (Anterior) is on top.
 
-![](/blog/images/brain-anatomy-ct/sides.png "CT Scan Orientation")
+<center>
+<figure>
+<img src="/blog/images/brain-anatomy-ct/sides.png" width=400>
+<figcaption>CT Scan Orientation</figcaption>
+</figure>
+</center>
 
 # Anatomy
 
@@ -36,10 +41,16 @@ The brain is located inside an area bounded by skull and skull base called crani
 
 Brain Stem             |  Cranial Fossae
 :-------------------------:|:-------------------------:
-<img src="https://upload.wikimedia.org/wikipedia/commons/6/69/1311_Brain_Stem.jpg" width="250">  |  <img src="/blog/images/brain-anatomy-ct/cranial-fossae.png" width="250">
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/69/1311_Brain_Stem.jpg" width="400">  |  <img src="/blog/images/brain-anatomy-ct/cranial-fossae.png" width="300">
 
 
-![](/blog/images/brain-anatomy-ct/skull.png "Skull Bone Structure")
+<center>
+<figure>
+<img src="/blog/images/brain-anatomy-ct/skull.png" width=400>
+<figcaption>Skull Bone Structure</figcaption>
+</figure>
+</center>
+
 
 Skull sutures has jagged appearance by nature they are not to be confused with fracture. In the figure, **dipole** is a porous bone tissue which seprates outer (thick and dense) and inner (thin, dense and brittle) tables. [Source](https://en.wikipedia.org/wiki/Calvaria_(skull)#Layers)
 
@@ -50,7 +61,13 @@ Skull sutures has jagged appearance by nature they are not to be confused with f
 4. Squamosal (Connects *squamous portion of the temporal bone with the parietal bones*)
 5. Metopic (Present in adults, Connects *2 fontal bones*)
 
-![](/blog/images/brain-anatomy-ct/sutures.png "Skull Bone Structure")
+<center>
+<figure>
+<img src="/blog/images/brain-anatomy-ct/sutures.png" width=400>
+<figcaption>Sutures</figcaption>
+</figure>
+</center>
+
 
 > Thinnest part of skull is **PTERION**. The frontal, parietal, temporal and sphenoid bones unite at this point.
 
@@ -61,7 +78,7 @@ The sinuses are hollow spaces in the skull and the face bones around your nose.
 
 Sinuses Overlay on Face             |  Sinuses Overlay on CT | Frontal Sinuses on CT
 :-------------------------:|:-------------------------:|:-------------------------:
-<img src="https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/articles/image_article_collections/anatomy_pages/SINUS2.jpg" width="350"> [Source](https://www.webmd.com/allergies/picture-of-the-sinuses) |  <img src="/blog/images/brain-anatomy-ct/sinuses.png" width="250"> | <img src="/blog/images/brain-anatomy-ct/frontal-sinuses.png" width="250">
+<img src="/blog/images/brain-anatomy-ct/sinuses-face.png" width="400">|  <img src="/blog/images/brain-anatomy-ct/sinuses.png" width="300"> | <img src="/blog/images/brain-anatomy-ct/frontal-sinuses.png" width="300">
 
 
 > The mastoid air cells are continuous with the middle ear.
@@ -70,7 +87,7 @@ Sinuses Overlay on Face             |  Sinuses Overlay on CT | Frontal Sinuses o
 
 CT Scan for Basal skull fracture           |  Symptoms
 :-------------------------:|:-------------------------:
-<img src="http://www.emdocs.net/wp-content/uploads/2019/04/Screen-Shot-2019-04-21-at-5.46.01-PM-768x382.png" width="550">  |  <img src="http://www.emdocs.net/wp-content/uploads/2019/04/Screen-Shot-2019-04-21-at-5.46.27-PM-768x759.png" width="250">
+<img src="/blog/images/brain-anatomy-ct/basilar-skull.png" width="330">  |  <img src="http://www.emdocs.net/wp-content/uploads/2019/04/Screen-Shot-2019-04-21-at-5.46.27-PM-768x759.png" width="350">
 
 [Source](http://www.emdocs.net/basilar-skull-fracture-basics-beyond/)
 
@@ -87,7 +104,13 @@ There are three layers of meninges (Acronym: Digital Audio Player):
 - Arachnoid mater
 - Pia mater.
 
-![](https://teachmeanatomy.info/wp-content/uploads/Overview-of-the-Meninges-of-the-Brain.jpg "Overview of the meninges, and their relationship to the skull and brain")
+<center>
+<figure>
+<img src="https://teachmeanatomy.info/wp-content/uploads/Overview-of-the-Meninges-of-the-Brain.jpg" width=400>
+<figcaption>Overview of the meninges, and their relationship to the skull and brain</figcaption>
+</figure>
+</center>
+
 
 Functions of these covering include:
 - To act as supportive framework for the cerebral and cranial vasculature.
@@ -113,12 +136,17 @@ Tentorium is an extension of the dura; it separates the cerebrum (brain) from th
 ![](https://upload.wikimedia.org/wikipedia/commons/b/b7/Illu_tentorium.jpg)
 
 
-![](/blog/images/brain-anatomy-ct/bleed.png "Tentorial Subdural Hemorrhage")
+<center>
+<figure>
+<img src="/blog/images/brain-anatomy-ct/bleed.png" width=400>
+<figcaption>Tentorial Subdural Hemorrhage</figcaption>
+</figure>
+</center>
 
 
 [Source](https://sinaiem.org/tentorial-subdural-hemorrhage/#:~:text=They%20may%20resemble%20intraparenchymal%20bleed,portion%20of%20the%20occipital%20lobes.)
 
-This is what Tentorial Subdural Hemorrhage look like on CT. It may resemble [intraparenchymal bleed](https://en.wikipedia.org/wiki/Intraparenchymal_hemorrhage#:~:text=Intraparenchymal%20hemorrhage%20(IPH)%20is%20one,a%20wide%20spectrum%20of%20disorders.) on CT.
+This is what Tentorial Subdural Hemorrhage look like on CT. It may resemble [intraparenchymal bleed](https://en.wikipedia.org/wiki/Intraparenchymal_hemorrhage#:~:text=Intraparenchymal%20hemorrhage%20(IPH)%20is%20one,a%20wide%20spectrum%20of%20disorders.) on CT scans in rare cases.
 
 
 ### Arachnoid Mater
@@ -172,11 +200,16 @@ These are components of brain which serperate the two halves of the brain.
 ### Ventricles
 
 Ventricles are spaces inside brain containing CSF and responsible for its production. There are 4 ventricles in brain:
-- Lateral Ventricles (counted as 2)
+- Lateral Ventricles (left and right)
 - Third Ventricle
 - Fourth Ventricle
 
-![](https://teachmeanatomy.info/wp-content/uploads/Superior-View-of-Cast-of-Ventricular-System.jpg "Ventricles")
+<center>
+<figure>
+<img src="/blog/images/brain-anatomy-ct/ventricles-all.png" width=600>
+<figcaption>Ventricles</figcaption>
+</figure>
+</center>
 
 **Lateral ventricles**
 
