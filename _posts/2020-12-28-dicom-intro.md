@@ -335,7 +335,8 @@ For example, if we want to examine the soft tissue in one CT scan we can use a w
 The **window width** is the range of the grayscale that can be displayed. The center of grayscale range is referred to as the **window level**.
 
 <center>
-<img src="https://i0.wp.com/myctregistryreview.com/wp-content/uploads/2019/08/wwwl-graphic.jpg?resize=1024%2C791&ssl=1">
+<img src="/blog/images/dicom-intro/window.png" width=600>
+<figcaption>Window width vs Window level</figcaption>
 </center>
 
 You can go through [this blog](https://kevalnagda.github.io/ct-windowing) to learn more about windowing.
