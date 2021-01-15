@@ -2,7 +2,7 @@
 toc: true
 layout: post
 use_math: true
-description: How to read head CT Scans? What are different types of bleeds?
+description: How to read head CT scans? What are different types of bleeds?
 categories: [medicine]
 title:  How to read HeadCT?
 image: images/read-ct/cover.jpg
